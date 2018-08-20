@@ -87,7 +87,7 @@
 				}).then(res => {
 					let data;
 					res && res.data.code && (data = res.data)
-					self.openAirPrint = (data.code == 200 && data.data == true) ? true : false;
+					self.openAirPrint = (data.code == 200 && data.data.bonjourStatus == '打开') ? true : false;
 					console.log(data)
 				}).catch(err => {
 					console.log(err)
@@ -96,10 +96,8 @@
 			},
 			toggleAirPt(value) {
 				this.openAirPrint = value == '打开' ? true : false;
-				getHttp({
-					url: reqInfo.toggleAirPrt.url,
-					params: value,
-				})
+				let rqUrl= value == '打开' ?reqInfo.openAirPrt.url : reqInfo.closeAirPrt.url;
+				Http({	url: rqUrl })
 			},
 			//设置AirPrint
 			setApt(value) {

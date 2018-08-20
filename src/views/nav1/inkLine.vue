@@ -3,12 +3,14 @@
         <h4>{{$t('Estimation only. Actual status may vary.')}}</h4>
         <ul>
             <!-- <li><i class="el-icon-menu blue"></i>青色墨水<span><i :class="iconTip"></i>{{inkStatus.cyan}}</span></li>
-    			<li><i class="el-icon-menu red"></i>品红墨水<span><i :class="iconTip"></i>{{inkStatus.pinkish}}</span></li>
-    			<li><i class="el-icon-menu yellow"></i></i>黄色墨水<span></i>{{inkStatus.yellow}}</span></li>
-    			<li class='lastLi'><i class="el-icon-menu black "></i>黑色墨水<span>{{inkStatus.black}}</span></li> -->
+        			<li><i class="el-icon-menu red"></i>品红墨水<span><i :class="iconTip"></i>{{inkStatus.pinkish}}</span></li>
+        			<li><i class="el-icon-menu yellow"></i></i>黄色墨水<span></i>{{inkStatus.yellow}}</span></li>
+        			<li class='lastLi'><i class="el-icon-menu black "></i>黑色墨水<span>{{inkStatus.black}}</span></li> -->
             <li v-for="(value, key,index) in inkStatus" :key="index" :class="{lastLi:index==3}">
                 <i :class="['el-icon-menu', key]"></i>{{$t(key)}}
-                <span :class="[value=='墨水瓶空' ? 'red':'blue']"><i :class="[value=='墨水瓶空' ? iconTipW :iconTipR]"></i>{{$t(value)}}</span>
+                <span :class="[value=='low' ? 'red':'blue']">
+                        <i :class="[value=='low' ? iconTipW :iconTipR]"></i>{{$t(value)}}<b v-if="value=='low'">{{$t(key)}}{{$t('瓶')}}</b>
+                </span>
             </li>
         </ul>
     </section>
@@ -89,7 +91,8 @@
         border-top: 1px solid #E9E9E9;
         width: 100%;
         box-sizing: border-box;
-        padding: 0 83px;
+        padding: 0 63px;
+
     }
     
     .lastLi {
@@ -98,7 +101,7 @@
     
     .inkLine li span {
         float: right;
-        width: 100px;
+        width: 120px;
         text-align: center;
     }
     

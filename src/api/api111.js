@@ -40,6 +40,11 @@ export const reqInfo={
         method: "GET",
         params: {}
     },
+    upgradeUrl: {
+        url: `${base}/upgradeUrl`,
+        method: "GET",
+        params: {}
+    },
     inkLine: {
         url: `${base}/cgi-bin/ink_capacity.lua`,
         method: "GET",
@@ -71,7 +76,12 @@ export const reqInfo={
         params: {}
     },
     creatSignalCA:{
-        url: `${base}/cgi-bin/general_cert.lua`,
+        url: `${base}/cgi-bin/cert._sels.luar`,
+        method: "GET",
+        params: {}
+    },
+    onApplyCA: {
+        url: `${base}/cgi-bin/eqorder.lua`,
         method: "GET",
         params: {}
     },

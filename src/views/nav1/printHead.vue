@@ -6,7 +6,12 @@
 			<li><i class="el-icon-star-on black"></i>黑色打印头<span><i class="el-icon-circle-close"></i>{{printHead.black}}</span></li> -->
 		 <li v-for="(value, key,index) in printHead" :key="index" :class="{lastLi:index==3}">
                 <i :class="['el-icon-menu', {'black':key=='BlackCartridge'},{'colorful':key=='colorCartridge'}]"></i>{{$t(key)}}
-                <span :class="[value=='打印头正常' ? 'blue':'red']"><i :class="[value=='打印头正常' ? iconTipR :iconTipW]"></i>{{$t(value)}}</span>
+                <span :class="[value=='ok' ? 'blue':'red']"><i :class="[value=='ok' ? iconTipR :iconTipW]"></i>
+                         <b v-if="value=='ok'||value=='contact_failure'||value=='defective'"> {{$t(value)}}</b>
+                         <b v-if="value=='absent'"> {{$t(value)}}{{$t(key)}}</b>
+                         <b v-if="value=='hign_temp'"> {{$t(key)}}{{$t(value)}}</b>
+                         <b v-if="value=='incorrect'"> {{$t(value)}}{{$t(key)}}</b>
+                </span>
             </li>
         </ul>
 	</section>
@@ -62,8 +67,13 @@
  .inkLine li{width: 100%; line-height: 40px;box-sizing: border-box; }
  .inkLine li span{
 	 float: right;
-	 width: 105px;
+	 width: 182px;
      text-align: center;
+    white-space: normal !important;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    line-height: 21px;
+
 
  }
  .inkLine li:before{

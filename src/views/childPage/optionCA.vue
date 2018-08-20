@@ -182,7 +182,7 @@
                 self.opDiv = true;
                 console.log(222)
                 getHttp({
-                    url: reqInfo.creatSignalCA.url,
+                    url: reqInfo.onApplyCA.url,
                     params: self.formLabelAlign
                 }).then(res => {
                     self.opDiv = false;

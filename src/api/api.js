@@ -58,11 +58,21 @@ export const reqInfo = {
         params: {}
     },
     AirptStatu: {
-        url: `${base}/printHead`,
+        url: `${base}/AirPrint`,
         method: "GET",
         params: {}
     },
-    toggleAirPrt: {
+    // toggleAirPrt: {
+    //     url: `${base}printHead`,
+    //     method: "GET",
+    //     params: {}
+    // },
+    openAirPrt: {
+        url: `${base}printHead`,
+        method: "GET",
+        params: {}
+    },
+    closeAirPrt: {
         url: `${base}printHead`,
         method: "GET",
         params: {}
@@ -73,6 +83,11 @@ export const reqInfo = {
         params: {}
     },
     creatSignalCA: {
+        url: `${base}/inkLine`,
+        method: "GET",
+        params: {}
+    },
+    onApplyCA: {
         url: `${base}/inkLine`,
         method: "GET",
         params: {}

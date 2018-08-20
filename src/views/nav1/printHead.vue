@@ -1,6 +1,6 @@
 <template>
 	<section class='inkLine'>
-		<h4>{{$t('当打印头有异常时，请尽快联系客服（400-000-0000）解决')}}</h4>
+		<h4>{{$t('当打印头有异常时，请尽快联系客服')}}<a href="tel:400-000-0000">（400-000-0000）</a>{{$t('解决')}}</h4>
 		<ul>
 			<!-- <li><i class="el-icon-star-on yellow"></i></i>彩色打印头<span><i class="el-icon-star-on black"></i>{{printHead.colorful}}</span></li>
 			<li><i class="el-icon-star-on black"></i>黑色打印头<span><i class="el-icon-circle-close"></i>{{printHead.black}}</span></li> -->
@@ -62,7 +62,9 @@
  .inkLine li{width: 100%; line-height: 40px;box-sizing: border-box; }
  .inkLine li span{
 	 float: right;
-	
+	 width: 105px;
+     text-align: center;
+
  }
  .inkLine li:before{
 	 /* content: "\F043"; */
@@ -90,4 +92,5 @@
 .inkLine  .el-icon-circle-close:before{color: rgb(255, 64, 129);}
 .colorful{ background: linear-gradient(#0099CE, #EA1D76 43%, #FFD100);}
 .colorful::before{content: '';}
+a{    text-decoration: none;color:#475669;}
 </style>

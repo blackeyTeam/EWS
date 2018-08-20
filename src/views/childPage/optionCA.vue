@@ -1,39 +1,35 @@
 <template>
-    <section>     
+    <section>
         <!--创建新的自签名证书-->
         <div v-if="$route.params.name=='creatSignalCA'" :class='$route.params.name'>
             <div class='titTxt'>{{$t('在下面输入申请的信息（注: 创建新的证书请求时，如有先前的请求将被擦除）')}}</div>
             <div style="margin: 20px;"></div>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-                <el-form-item :label="$t('常用名称：')" >
+                <el-form-item :label="$t('常用名称：')">
                     <el-input v-model="formLabelAlign.commonName" placeholder="请输入常用名称"></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('组织机构：')">
                     <el-input v-model="formLabelAlign.organizationName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('部门：')" >
+                <el-form-item :label="$t('部门：')">
                     <el-input v-model="formLabelAlign.organizationUnitName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('市／县：')" >
+                <el-form-item :label="$t('市／县：')">
                     <el-input v-model="formLabelAlign.localityName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('省 / 直辖市 / 自治区：')" >
+                <el-form-item :label="$t('省 / 直辖市 / 自治区：')">
                     <el-input v-model="formLabelAlign.provienceName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('国家／地区：')" >
+                <el-form-item :label="$t('国家／地区：')">
                     <el-input v-model="formLabelAlign.countryName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('签名算法：')" >
+                <el-form-item :label="$t('签名算法：')">
                     <!-- <select class="input-xlarge single" name="签名算法">
-                        <option value="SHA256">SHA256</option>
-                        <option value="Your">SHA256</option>
-                    </select> -->
-                    <el-select v-model="valueSHA" >
-                        <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                                <option value="SHA256">SHA256</option>
+                                <option value="Your">SHA256</option>
+                            </select> -->
+                    <el-select v-model="valueSHA">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
@@ -44,41 +40,37 @@
                     </router-link>
                 </div>
             </el-form>
-        </div>  
+        </div>
         <!--创建证书申请-->
         <div v-if="$route.params.name=='applyCA'" :class='$route.params.name'>
             <div class='titTxt'>{{$t('在下面输入申请的信息（注: 创建新的证书请求时，如有先前的请求将被擦除）')}}</div>
             <div style="margin: 20px;"></div>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-                <el-form-item :label="$t('常用名称：')" >
+                <el-form-item :label="$t('常用名称：')">
                     <el-input v-model="formLabelAlign.commonName" placeholder="请输入常用名称"></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('组织机构：')">
                     <el-input v-model="formLabelAlign.organizationName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('部门：')" >
+                <el-form-item :label="$t('部门：')">
                     <el-input v-model="formLabelAlign.organizationUnitName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('市／县：')" >
+                <el-form-item :label="$t('市／县：')">
                     <el-input v-model="formLabelAlign.localityName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('省 / 直辖市 / 自治区：')" >
+                <el-form-item :label="$t('省 / 直辖市 / 自治区：')">
                     <el-input v-model="formLabelAlign.provienceName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('国家／地区：')" >
+                <el-form-item :label="$t('国家／地区：')">
                     <el-input v-model="formLabelAlign.countryName"></el-input>
                 </el-form-item>
-                <el-form-item :label="$t('签名算法：')" >
+                <el-form-item :label="$t('签名算法：')">
                     <!-- <select class="input-xlarge single" name="签名算法">
-                        <option value="SHA256">SHA256</option>
-                        <option value="Your">SHA256</option>
-                    </select> -->
-                    <el-select v-model="valueSHA" >
-                        <el-option
-                        v-for="item in options"
-                        :key="item.value"
-                        :label="item.label"
-                        :value="item.value">
+                                <option value="SHA256">SHA256</option>
+                                <option value="Your">SHA256</option>
+                            </select> -->
+                    <el-select v-model="valueSHA">
+                        <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
                     </el-select>
                 </el-form-item>
@@ -94,7 +86,7 @@
         <div v-if="$route.params.name=='submit'" :class='$route.params.name'>
             <div>
                 <i class="el-icon-circle-check checkHook"></i> {{$t('认证请求已创建')}}
-                <p>{{$t('证书申请必须是 PEM/Base64 编码，并需要提供给认证中心来生成和签署证书。')}}</p>                
+                <p>{{$t('证书申请必须是 PEM/Base64 编码，并需要提供给认证中心来生成和签署证书。')}}</p>
                 <p>{{$t('单击“保存”保存证书申请以提交给认证中心。')}}</p>
             </div>
             <div class="selectCaButton">
@@ -122,22 +114,22 @@
                 <p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
             </div>
             <div class="selectCaButton">
-                <el-upload class="upload-demo" method="post" action="https://192.168.203.247/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :on-remove="handleRemove" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList">
+                <el-upload class="upload-demo imCAinp" method="post" action="https://192.168.203.247/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :on-remove="handleRemove" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
-                    <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div>
+                    <!-- <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div> -->
                 </el-upload>
-                <el-form ref="form" label-width="69px" size="mini">
-				<el-form-item :label="$t('密码')+':'">
-					<el-input v-model="importPwd"   ></el-input>
-				</el-form-item>
-			</el-form>
+                <el-form ref="form" label-width="59px" size="mini">
+                    <el-form-item :label="$t('密码')+':'">
+                        <el-input v-model="importPwd"></el-input>
+                    </el-form-item>
+                </el-form>
             </div>
             <div class="selectCaButton">
-                    <el-button type="primary" @click="importCASub">{{$t('完成')}}</el-button>
-                    <router-link to="/table/selectCA">
-                        <el-button type="infoBtn">{{$t('取消')}}</el-button>
-                    </router-link>
-                </div>
+                <el-button type="primary" @click="importCASub">{{$t('完成')}}</el-button>
+                <router-link to="/table/selectCA">
+                    <el-button type="infoBtn">{{$t('取消')}}</el-button>
+                </router-link>
+            </div>
         </div>
         <!--弹窗-->
         <el-card class="box-card opDiv" v-if="opDiv">
@@ -172,12 +164,12 @@
     
                 },
                 options: [{
-                            value: 'SHA256',
-                            label: 'SHA256'
-                            }],
-                valueSHA:'SHA256',//签名下拉选项值
-                fileList:[],//证书载体
-                importPwd:'',
+                    value: 'SHA256',
+                    label: 'SHA256'
+                }],
+                valueSHA: 'SHA256', //签名下拉选项值
+                fileList: [], //证书载体
+                importPwd: '',
                 opDiv: false,
                 progress: true,
     
@@ -237,25 +229,29 @@
                 }).catch(function(error) {
                     alert(error);
                 })
-            },//导入证书
-            importCASub(){
-
+            }, //导入证书
+            importCASub() {
+    
             },
-            popDiv(){
-              this.opDiv=false;
+            popDiv() {
+                this.opDiv = false;
             },
-   
+    
         },
     }
 </script>
 
 <style>
     /***********.creatSignalCA****************/
-   .applyCA   .titTxt,.creatSignalCA   .titTxt，{
-       height: 55px;
-       border-bottom: 1px solid #E9E9E9;
-   }
-  .applyCA  .el-form-item__label,.creatSignalCA  .el-form-item__label {
+    
+    .applyCA .titTxt,
+    .creatSignalCA .titTxt， {
+        height: 55px;
+        border-bottom: 1px solid #E9E9E9;
+    }
+    
+    .applyCA .el-form-item__label,
+    .creatSignalCA .el-form-item__label {
         width: 150px!important;
         font-weight: 500;
     }
@@ -264,8 +260,26 @@
         text-align: center;
     }
     
-     .applyCA .el-input, .creatSignalCA .el-input{
+    .applyCA .el-input,
+    .creatSignalCA .el-input {
         width: 270px;
+    }
+    
+    .importCA .el-input {
+        display: inline;
+    }
+    
+    .imCAinp {
+        float: left;
+    }
+    
+    .importCA .el-input__inner {
+        width: 100%!important;
+    }
+    
+    .importCA .el-form {
+        width: 213px;
+        display: inline-block;
     }
     
     .el-input__inner {
@@ -282,10 +296,17 @@
     }
     
     .selectCaButton {
-           margin:10px 0 10px 0 ;
-           float: right;
+        margin: 10px 0 10px 0;
+        float: right;
     }
-    .checkHook{margin-right: 10px;}
-    .selectCaButton .el-button--primary,.selectCaButton .el-button--default{margin-right:20px;}
+    
+    .checkHook {
+        margin-right: 10px;
+    }
+    
+    .selectCaButton .el-button--primary,
+    .selectCaButton .el-button--default {
+        margin-right: 20px;
+    }
 </style>
 

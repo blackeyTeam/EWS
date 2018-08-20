@@ -1,27 +1,27 @@
 <template>
 	<section>
-		<el-form label-width="150px" :model="formLabelAlign" ref="formBox" class='form'>
+		<el-form label-width="150px" :model="formLabelAlign" ref="formBox" class='form' :rules="Rules">
 			<!-- <el-form-item :label="key" v-for="(value, key,index) in formLabelAlign"::key="index" >
-														<input  v-model="formLabelAlign[key]" :disabled="setAirPrint"  unselectable="on" >
-												</el-form-item> -->
+															<input  v-model="formLabelAlign[key]" :disabled="setAirPrint"  unselectable="on" >
+													</el-form-item> -->
 			<p>{{$t('通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件')}}</p>
 			<el-form-item :label="$t('AirPrint™状态')+':'">
-				<el-input v-model="formLabelAlign.bonjourStatus"  ></el-input>
+				<el-input v-model="formLabelAlign.bonjourStatus"></el-input>
 			</el-form-item>
-			<el-form-item :label="$t('打印机Bonjour名称')+':'">
-				<el-input v-model="formLabelAlign.bonjourServiceName"   ></el-input>
+			<el-form-item :label="$t('打印机Bonjour名称')+':'"  prop='bonjourServiceName'>
+				<el-input v-model="formLabelAlign.bonjourServiceName"></el-input>
 			</el-form-item>
 			<el-form-item :label="$t('打印机位置')+':'">
-				<el-input v-model="formLabelAlign.bonjourServiceNote"   ></el-input>
+				<el-input v-model="formLabelAlign.bonjourServiceNote"></el-input>
 			</el-form-item>
-			<el-form-item :label="$t('地理位置（经度）')+':'" >
-				<el-input v-model="formLabelAlign.locationLongitude"  ></el-input>
+			<el-form-item :label="$t('地理位置（经度）')+':'">
+				<el-input v-model="formLabelAlign.locationLongitude"></el-input>
 			</el-form-item>
-			<el-form-item :label="$t('地理位置（维度）')+':'" >
-				<el-input v-model="formLabelAlign.locationLatitude"   ></el-input>
+			<el-form-item :label="$t('地理位置（维度）')+':'">
+				<el-input v-model="formLabelAlign.locationLatitude"></el-input>
 			</el-form-item>
 			<el-form-item :label="$t('地理位置（海拔）')+':'">
-				<el-input v-model="formLabelAlign.locationAltitude"  ></el-input>
+				<el-input v-model="formLabelAlign.locationAltitude"></el-input>
 			</el-form-item>
 			<div class="selectCaButton" v-if="!setAirPrint">
 				<el-button v-if="!openAirPrint" type="primary" @click="toggleAirPt('打开')">{{$t('打开AirPrint™')}}</el-button>
@@ -61,12 +61,19 @@
 				setAirPrint: false,
 				opDiv: false,
 				progress: true,
+				Rules: {
+					bonjourServiceName: [{
+						required: true,
+						message: '不可为空',
+						trigger: 'blur'
+					}],
+				},
 	
 			};
 		},
 		methods: {
 			AirptInfo: (self) => {
-	            
+	
 				Http(reqInfo.AirptInfo).then(data => {
 					self.formLabelAlign = data;
 					console.log(data)

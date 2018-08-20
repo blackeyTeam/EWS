@@ -3,7 +3,7 @@
     <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
     <!-- <h3 class="title">登录</h3> -->
     <el-form-item prop="account" >
-      <el-input type="text" v-model="ruleForm2.account" auto-complete="off" placeholder="用户名"></el-input>
+      <el-input type="text" v-model="ruleForm2.account" auto-complete='off' placeholder="用户名"></el-input>
     </el-form-item>
     <el-form-item prop="checkPass">
       <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" minlength='6' placeholder="请输入密码"></el-input>
@@ -29,8 +29,8 @@
       return {
         logining: false,
         ruleForm2: {
-          account: 'admin',
-          checkPass: '123456'
+          account: '',
+          checkPass: ''
         },
         rules2: {
           account: [

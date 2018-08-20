@@ -19,7 +19,6 @@ module.exports = {
     black: 'Black',
     'full': 'Ink Available',
     'low': 'Please Change ',
-    '墨水瓶满': 'Ink Full',
     '瓶': '',
     colorCartridge: "Corlor Cartridge",
     BlackCartridge: 'Black Cartridge',

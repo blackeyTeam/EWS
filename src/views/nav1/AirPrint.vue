@@ -6,7 +6,7 @@
 													</el-form-item> -->
 			<p>{{$t('通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件')}}</p>
 			<el-form-item :label="$t('AirPrint™状态')+':'">
-				<el-input v-model="formLabelAlign.bonjourStatus"></el-input>
+				<el-input v-model="bonjourStatus"></el-input>
 			</el-form-item>
 			<el-form-item :label="$t('打印机Bonjour名称')+':'"  prop='bonjourServiceName'>
 				<el-input v-model="formLabelAlign.bonjourServiceName"></el-input>
@@ -49,13 +49,13 @@
 			return {
 				labelPosition: 'center',
 				formLabelAlign: {
-					bonjourStatus: '',
 					bonjourServiceName: '',
 					bonjourServiceNote: '',
 					locationLongitude: '',
 					locationLatitude: '',
 					locationAltitude: '',
 				},
+				bonjourStatus: '',
 				yetformLabel: {},
 				openAirPrint: false,
 				setAirPrint: false,
@@ -88,12 +88,8 @@
 					let data;
 					res && res.data.code && (data = res.data)
 					self.openAirPrint = (data.code == 200 && data.data == '打开') ? true : false;
-<<<<<<< HEAD
 					self.bonjourStatus=data.data;
-					console.log(data.data)
-=======
-					console.log(data)
->>>>>>> 957871eb6e3d27e1d7f55af03133514764a3c0ed
+					console.log(self.bonjourStatus)
 				}).catch(err => {
 					console.log(err)
 				})

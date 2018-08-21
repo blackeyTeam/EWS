@@ -50,7 +50,7 @@
 				else callback()
 			};
 			var validatePass = (rule, value, callback) => {
-				if (value !== this.useInfo.newPassWd)
+				if (value !== this.useInfo.password)
 					callback(new Error('两次输入密码不一致!'));
 				else callback()
 			};

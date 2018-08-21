@@ -45,7 +45,7 @@
 		data() {
 			var oldpassWd = (rule, value, callback) => {
 				let user = JSON.parse(sessionStorage.getItem('user'));
-				if (value !== user.password)
+				if (value !== user.oldpassword)
 					callback(new Error('旧密码输入错误'));
 				else callback()
 			};

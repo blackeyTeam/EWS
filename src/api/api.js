@@ -58,7 +58,7 @@ export const reqInfo = {
         params: {}
     },
     AirptStatu: {
-        url: `${base}/AirPrint`,
+        url: `${base}/airStatus`,
         method: "GET",
         params: {}
     },

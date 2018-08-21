@@ -3,7 +3,7 @@ import Qs from 'qs';
 // import config from './config';
 
 // let base = 'https://192.168.203.214';
-let base = ''
+let base = '/cgi-bin'
 
 // export const requestLogin = params => { return axios.get(`${base}/login`, { params: params}).then(res => res.data); };
 // export const requestLogin = params => { return axios.post(`${base}/login`, params).then(res => res.data); };
@@ -11,52 +11,52 @@ let base = ''
 export const getUserList = params => { return axios.get(`${base}/user/list`, { params: params }); };
 
 // export const getUserListPage = params => { return axios.get(`${base}/user/listpage`, { params: params }); };
-export const getUserListPage = params => { return axios.get(`${base}/cgi-bin/query_user.lua`, { params: params }); };
+export const getUserListPage = params => { return axios.get(`${base}/query_user.lua`, { params: params }); };
 
 export const removeUser = params => { return axios.get(`${base}/user/remove`, { params: params }); };
 
-export const batchRemoveUser = params => { return axios.get(`${base}/cgi-bin/remove_user.lua`, { params: params }); };
+export const batchRemoveUser = params => { return axios.get(`${base}/remove_user.lua`, { params: params }); };
 
 export const editUser = params => { return axios.get(`${base}/user/edit`, { params: params }); };
 
-export const addUser = params => { return axios.get(`${base}/cgi-bin/add_user.lua`, { params: params }); };
+export const addUser = params => { return axios.get(`${base}/add_user.lua`, { params: params }); };
 
 export const test = params => { return axios.get(`m.lvmama.com`, { params: 1 }); };
 
 export const reqInfo={
     requestLogin:{
-        url: `${base}/cgi-bin/auth.lua`,
+        url: `${base}/auth.lua`,
         // url : `${base}/login`,
         method: "GET",
         params: {}
     },
     getLatestVersion: {
-        url: `${base}/cgi-bin/query_system.lua`,
+        url: `${base}/query_system.lua`,
         method: "GET",
         params: {}
     },
     updateVersion: {
-        url: `${base}/cgi-bin/query_process.lua`,
+        url: `${base}/query_process.lua`,
         method: "GET",
         params: {}
     },
     upgradeUrl: {
-        url: `${base}/upgradeUrl`,
+        url: `${base}/upgrade`,
         method: "GET",
         params: {}
     },
     inkLine: {
-        url: `${base}/cgi-bin/ink_capacity.lua`,
+        url: `${base}/ink_capacity.lua`,
         method: "GET",
         params: {}
     },
     printHead: {
-        url: `${base}/cgi-bin/print_head.lua`,
+        url: `${base}/print_head.lua`,
         method: "GET",
         params: {}
     },
     AirptInfo: {
-        url: `${base}/cgi-bin/query_bonjour.lua`,
+        url: `${base}/query_bonjour.lua`,
         method: "GET",
         params: {}
     },
@@ -71,27 +71,47 @@ export const reqInfo={
         params: {}
     },
     saveAirPrtList: {
-        url: `${base}/cgi-bin/add_bonjour.lua`,
+        url: `${base}/add_bonjour.lua`,
         method: "GET",
         params: {}
     },
     creatSignalCA:{
-        url: `${base}/cgi-bin/cert._sels.luar`,
+        url: `${base}/cert._self.lua`,
         method: "GET",
         params: {}
     },
     onApplyCA: {
-        url: `${base}/cgi-bin/eqorder.lua`,
+        url: `${base}/reqorder.lua`,
+        method: "GET",
+        params: {}
+    },
+    AirptInfo: {
+        url: `${base}/AirPrint`,
+        method: "GET",
+        params: {}
+    },
+    AirptStatu: {
+        url: `${base}/status.lua`,
         method: "GET",
         params: {}
     },
     reSetPwd: {
-        url: `${base}/cgi-bin/modify_sys_user.lua`,
+        url: `${base}/modify_sys_user.lua`,
         method: "GET",
         params: {},
     },
     removeUser: {
-        url: `${base}/cgi-bin/remove_user.lua`,
+        url: `${base}/remove_user.lua`,
+        method: "GET",
+        params: {}
+    },
+    openAirPrt: {
+        url: `${base}/airprint_start.lua`,
+        method: "GET",
+        params: {}
+    },
+    closeAirPrt: {
+        url: `${base}/airprint_stop.lua`,
         method: "GET",
         params: {}
     },

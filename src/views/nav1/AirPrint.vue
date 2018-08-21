@@ -87,7 +87,7 @@
 				}).then(res => {
 					let data;
 					res && res.data.code && (data = res.data)
-					self.openAirPrint = (data.code == 200 && data.data.bonjourStatus == '打开') ? true : false;
+					self.openAirPrint = (data.code == 200 && data.data == '打开') ? true : false;
 					console.log(data)
 				}).catch(err => {
 					console.log(err)

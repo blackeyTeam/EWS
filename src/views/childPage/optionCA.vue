@@ -202,7 +202,7 @@
                 // }).catch(function(error) {
                 //     alert(error);
                 // })
-                window.open('/ca.crt')
+                window.open('/ca.csr')
             },
             //上传证书
             handleRemove(file, fileList) {

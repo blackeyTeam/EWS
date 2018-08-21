@@ -88,8 +88,12 @@
 					let data;
 					res && res.data.code && (data = res.data)
 					self.openAirPrint = (data.code == 200 && data.data == '打开') ? true : false;
+<<<<<<< HEAD
 					self.bonjourStatus=data.data;
 					console.log(data.data)
+=======
+					console.log(data)
+>>>>>>> 957871eb6e3d27e1d7f55af03133514764a3c0ed
 				}).catch(err => {
 					console.log(err)
 				})

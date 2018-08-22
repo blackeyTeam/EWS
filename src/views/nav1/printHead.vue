@@ -1,6 +1,6 @@
 <template>
 	<section class='inkLine'>
-		<h4>{{$t('当打印头有异常时，请尽快联系客服')}}<a href="tel:400-000-0000">（400-000-0000）</a>{{$t('解决')}}</h4>
+		<h4>{{$t('当打印头有异常时，请尽快联系客服')}}<a href="tel:400-100-5678">（400-100-5678）</a>{{$t('解决')}}</h4>
 		<ul>
 			<!-- <li><i class="el-icon-star-on yellow"></i></i>彩色打印头<span><i class="el-icon-star-on black"></i>{{printHead.colorful}}</span></li>
 			<li><i class="el-icon-star-on black"></i>黑色打印头<span><i class="el-icon-circle-close"></i>{{printHead.black}}</span></li> -->

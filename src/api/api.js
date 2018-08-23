@@ -87,6 +87,11 @@ export const reqInfo = {
         method: "GET",
         params: {}
     },
+    reqCaCommonName: {
+        url: `${base}/CommonName`,
+        method: "GET",
+        params: {}
+    },
     creatSignalCA: {
         url: `${base}/inkLine`,
         method: "GET",

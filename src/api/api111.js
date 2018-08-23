@@ -76,12 +76,12 @@ export const reqInfo={
         params: {}
     },
     reqInfoCA: {
-        url: `${base}/infoCA`,
+        url: `${base}/query_cert.lua`,
         method: "GET",
         params: {}
     },
     reqCaCommonName: {
-        url: `${base}/CommonName`,
+        url: `${base}/cert_name.lua`,
         method: "GET",
         params: {}
     },

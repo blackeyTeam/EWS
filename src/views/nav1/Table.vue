@@ -34,15 +34,15 @@
 						<input type="radio" id="importCA" name="selectCA" ref="installCA" />
 						<label for="importCA">男</label>
 					</div> -->
-					<input type="radio" name="selectCA" id="creatSignalCA" ref="creatSignalCA">
+					<input type="radio" name="selectCA" id="creatSignalCA" ref="creatSignalCA" checked="checked">
 					<label for="creatSignalCA">{{$t('创建新的自签名证书')}}
 								<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
 							</label>
-					<input type="radio" name="selectCA" id="applyCA" ref="applyCA" checked="checked">
+					<input type="radio" name="selectCA" id="applyCA" ref="applyCA" >
 					<label for="applyCA">{{$t('创建证书申请')}}
 								<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
 							</label>
-					<input type="radio" name="selectCA" id="installCA" ref="installCA" checked="false">
+					<input type="radio" name="selectCA" id="installCA" ref="installCA" >
 					<label for="installCA">{{$t('安装证书')}}
 								<p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
 							</label>
@@ -70,7 +70,7 @@
 						<el-button type="primary">{{$t('配置管理')}}</el-button>
 					</router-link>
 					<router-link to="/table/infoCA">
-						<el-button type="infoBtn">{{$t('查看证书')}}</el-button>
+						<el-button type="infoBtn" @click="getInfoCA">{{$t('查看证书')}}</el-button>
 					</router-link>
 	
 				</div>
@@ -183,7 +183,9 @@
 		removeUser,
 		batchRemoveUser,
 		editUser,
-		addUser
+		addUser,
+		Http,
+		reqInfo
 	} from '../../api/api';
 	
 	export default {
@@ -222,7 +224,7 @@
 				addFormRules: {
 					name: [{
 						required: true,
-						message: '请输入姓名',
+						message: this.$t('请输入')+this.$t('用户名'),
 						trigger: 'blur'
 					}]
 				},
@@ -234,7 +236,7 @@
 				},
 				//查看证书信息
 				CAobj: {
-					'verson': '1.0.0',
+					'version': '1.0.0',
 					'Serial Number': '1.0.0',
 					'Issued Organization': '1.0.0',
 					'Serial Number': '1.0.0',
@@ -353,7 +355,10 @@
 				});
 			},
 			handleClose(done) {
-				this.$confirm(this.$t('确认关闭') + '?')
+				this.$confirm(this.$t('确认关闭') + '?',{
+					confirmButtonText: this.$t('确定'),
+					cancelButtonText: this.$t('取消'),
+				})
 					.then(_ => {
 						done();
 						this.addFormVisible = false;
@@ -399,7 +404,23 @@
 				if (columnIndex == 1 || columnIndex == 2) {
 					return 'cellBorder'
 				}
+			},
+			getInfoCA(){
+				let self=this;
+                 Http({url: reqInfo.reqInfoCA.url}).then(res=>{
+					 console.log(res)
+					 self.CAobj=res;
+					 sessionStorage.setItem('CAobj',JSON.stringify(self.CAobj));
+				 })
 			}
+		},
+		created() {
+			if(this.$route.path=='/table/infoCA'){
+				  let CAobj=JSON.parse(sessionStorage.getItem('CAobj'));
+					  !CAobj&&this.getInfoCA();
+					   this.CAobj=CAobj;
+			}
+			console.log(this.$route)
 		},
 		mounted() {
 			this.getUsers();

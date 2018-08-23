@@ -46,12 +46,12 @@
 			var oldpassWd = (rule, value, callback) => {
 				let user = JSON.parse(sessionStorage.getItem('user'));
 				if (value !== user.password)
-					callback(new Error('旧密码输入错误'));
+					callback(new Error(this.$t('原始密码')+this.$t('输入错误')));
 				else callback()
 			};
 			var validatePass = (rule, value, callback) => {
 				if (value !== this.useInfo.password)
-					callback(new Error('两次输入密码不一致!'));
+					callback(new Error(this.$t('两次输入密码不一致')));
 				else callback()
 			};
 			var passwordRule = (rule, value, callback) => {
@@ -71,8 +71,8 @@
 				reSetRules: {
 					oldpassword: [{
 							required: true,
-							message: '请输入原始密码',
-							trigger: 'blur'
+							message: this.$t('请输入')+this.$t('原始密码'),
+							trigger: 'change'
 						},
 						{
 							validator: oldpassWd,
@@ -81,7 +81,7 @@
 					],
 					password: [{
 							required: true,
-							message: '请输入新密码',
+							message: this.$t('请输入')+this.$t('新密码'),
 							trigger: 'change'
 						},
 						{
@@ -91,7 +91,7 @@
 					],
 					repassWord: [{
 							required: true,
-							message: '请再次输入新密码',
+							message: this.$t('请再次输入')+this.$t('新密码'),
 							trigger: 'change',
 						},
 						{

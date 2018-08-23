@@ -5,8 +5,8 @@
 															<input  v-model="formLabelAlign[key]" :disabled="setAirPrint"  unselectable="on" >
 													</el-form-item> -->
 			<p>{{$t('通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件')}}</p>
-			<el-form-item :label="$t('AirPrint™状态')+':'">
-				<el-input v-model="bonjourStatus"></el-input>
+			<el-form-item :label="$t('AirPrint™状态')+':'" >
+				<el-input  :value='$t(bonjourStatus)' class='bonjour'></el-input>
 			</el-form-item>
 			<el-form-item :label="$t('打印机Bonjour名称')+':'"  prop='bonjourServiceName'>
 				<el-input v-model="formLabelAlign.bonjourServiceName"></el-input>
@@ -136,13 +136,13 @@
 			setReadonly(bool) {
 				let inp = this.$refs.formBox.$el.getElementsByTagName('input');
 				if (bool) {
-					[].forEach.apply(inp, [(item) => {
+					[].forEach.apply(inp, [(item,i) => {
 						item.setAttribute("disabled", bool);
 						item.removeAttribute("clearable");
 					}])
 				} else {
-					[].forEach.apply(inp, [(item) => {
-						item.removeAttribute("disabled");
+					[].forEach.apply(inp, [(item,i) => {
+						i!=0&&item.removeAttribute("disabled");
 						item.setAttribute("clearable", '');
 					}])
 				}

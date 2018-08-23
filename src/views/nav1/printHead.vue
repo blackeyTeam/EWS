@@ -5,7 +5,7 @@
 			<!-- <li><i class="el-icon-star-on yellow"></i></i>彩色打印头<span><i class="el-icon-star-on black"></i>{{printHead.colorful}}</span></li>
 			<li><i class="el-icon-star-on black"></i>黑色打印头<span><i class="el-icon-circle-close"></i>{{printHead.black}}</span></li> -->
 		 <li v-for="(value, key,index) in printHead" :key="index" :class="{lastLi:index==3}">
-                <i :class="['el-icon-menu', {'black':key=='BlackCartridge'},{'colorful':key=='colorCartridge'}]"></i>{{$t(key)}}
+                <i :class="['el-icon-menu', {'black':key=='BlackCartridge'},{'colorful':key=='colorCartridge'}]"></i><b>{{$t(key)}}</b>
                 <span :class="[value=='ok' ? 'blue':'red']"><i :class="[value=='ok' ? iconTipR :iconTipW]"></i>
                          <b v-if="value=='ok'||value=='contact_failure'||value=='defective'"> {{$t(value)}}</b>
                          <b v-if="value=='absent'"> {{$t(value)}}{{$t(key)}}</b>
@@ -40,15 +40,15 @@
             //获取打印头状态
             getPrintHead() {
                 const self = this;
-                let printHead = JSON.parse(sessionStorage.getItem('printHead'));//优先取缓
-                !printHead?getHttp({url: reqInfo.printHead.url}).then(res=>{
+                // let printHead = JSON.parse(sessionStorage.getItem('printHead'));//优先取缓
+                getHttp({url: reqInfo.printHead.url}).then(res=>{
                           console.log(res)
                           let data=res&&res.data.code==200?res.data.data:{};
                             Object.keys(data).length!=0&&(self.printHead=data);
 						    sessionStorage.setItem('printHead', JSON.stringify(data))
                 }).catch(function (error) {
                        alert(error);                 
-                }):(self.printHead=printHead);
+                });
     
             },
             
@@ -64,7 +64,7 @@
  ul{
 	 list-style-type:none
  }
- .inkLine li{width: 100%; line-height: 40px;box-sizing: border-box; }
+ .inkLine li{width: 100%; line-height: 40px;box-sizing: border-box;overflow: hidden; }
  .inkLine li span{
 	 float: right;
 	 width: 182px;
@@ -73,8 +73,7 @@
     padding-top: 8px;
     padding-bottom: 8px;
     line-height: 21px;
-
-
+    display: inline-block;
  }
  .inkLine li:before{
 	 /* content: "\F043"; */
@@ -94,13 +93,21 @@
 .red{color: rgb(255, 64, 129);}
 .yellow{color: rgb(255, 230, 0);}
 .black{color: rgb(7, 7, 7); background-color: rgb(7, 7, 7); }
-.inkLine  .el-icon-circle-close:before, .inkLine  .el-icon-circle-check:before{
+/* .inkLine  .el-icon-circle-close:before, .inkLine  .el-icon-circle-check:before{
     right: 10px;
     top: 13px;
     position: absolute;
-}
+} */
 .inkLine  .el-icon-circle-close:before{color: rgb(255, 64, 129);}
 .colorful{ background: linear-gradient(#0099CE, #EA1D76 43%, #FFD100);}
 .colorful::before{content: '';}
 a{    text-decoration: none;color:#475669;}
+/* .inkLine li b{display: inline-block;} */
+.inkLine li>b{    
+    display: inline-block;
+    position: absolute;
+        top: 50%;
+        left: 63px;
+        transform: translate(0, -50%);
+    }
 </style>

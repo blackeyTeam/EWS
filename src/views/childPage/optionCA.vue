@@ -137,7 +137,7 @@
                 <el-progress :text-inside="true" :stroke-width="18" :percentage="50" v-if="progress"></el-progress>
                 <p v-if="progress">{{$t('生成证书申请中')}} ...</p>
                 <i v-if="!progress" class="el-icon-circle-check"></i>
-                <p v-if="!progress">自签名证书已更新</p>
+                <p v-if="!progress">{{$t('自签名证书已更新')}}</p>
             </div>
             <el-button style="float: right; margin: -10px -50px 0 0" type="text" @click="popDiv">X</el-button>
         </el-card>

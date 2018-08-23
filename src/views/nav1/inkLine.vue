@@ -42,8 +42,8 @@
             //获取墨水状态
             getInk() {
                 const self = this;
-                let inkStatus = JSON.parse(sessionStorage.getItem('inkStatus')); //优先取缓
-                !inkStatus ? getHttp({
+                // let inkStatus = JSON.parse(sessionStorage.getItem('inkStatus')); //优先取缓
+                getHttp({
                     url: reqInfo.inkLine.url
                 }).then(res => {
                     console.log(res)
@@ -53,7 +53,7 @@
                     console.log(self.inkStatus)
                 }).catch(function(error) {
                     alert(error);
-                }) : (self.inkStatus = inkStatus);
+                });
     
             },
     
@@ -100,7 +100,7 @@
     }
     
     .inkLine li span {
-        float: right;
+        /* float: right; */
         width: 120px;
         text-align: center;
     }
@@ -113,10 +113,11 @@
         /* content: "\E621"; */
         /* content: "\E620"; */
         position: absolute;
-        top: 13px;
+        top: 50%;
         left: 10px;
         width: 12px;
         height: 12px;
+        transform: translate(0, -50%);
     }
     
     .blue {
@@ -151,8 +152,9 @@
     .inkLine .el-icon-circle-close:before,
     .inkLine .el-icon-circle-check:before {
         right: 10px;
-        top: 13px;
+        top: 50%;
         position: absolute;
+        transform: translate(0, -50%);
     }
     
     .inkLine .el-icon-circle-close:before {

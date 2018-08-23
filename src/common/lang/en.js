@@ -30,6 +30,7 @@ module.exports = {
     'absent': 'Please insert',
     'hign_temp': 'Print head temperature is too high, please contact customer service.',
     'incorrect': 'Please insert the original.',
+    'unknown': 'unknown',
     '通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件': 'AirPrint™ enables easy network printing from Apple-supported products—no driver installation or software downloads required.',
     'AirPrint™状态': 'AirPrint™ Status',
     '打印机Bonjour名称': 'Printer Bonjour Name',

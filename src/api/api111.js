@@ -75,6 +75,16 @@ export const reqInfo={
         method: "GET",
         params: {}
     },
+    reqInfoCA: {
+        url: `${base}/infoCA`,
+        method: "GET",
+        params: {}
+    },
+    reqCaCommonName: {
+        url: `${base}/CommonName`,
+        method: "GET",
+        params: {}
+    },
     creatSignalCA:{
         url: `${base}/cert_self.lua`,
         method: "GET",

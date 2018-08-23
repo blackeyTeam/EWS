@@ -148,7 +148,8 @@
     import {
         reqInfo,
         getHttp,
-        postHttp
+        postHttp,
+Http
     } from '../../api/api';
     export default {
         data() {
@@ -233,10 +234,27 @@
             importCASub() {
     
             },
+            //获取证书常用名称
+            reqCommonName(){
+                let self=this;
+                 Http({url: reqInfo.reqCaCommonName.url}).then(res=>{
+					 console.log(res)
+					 self.formLabelAlign.commonName=res;
+				 })
+            },
             popDiv() {
                 this.opDiv = false;
             },
     
+        },
+        created() {
+            let path=this.$route.path;
+            if(path.indexOf('creatSignalCA')!=-1||path.indexOf('applyCA')!=-1){
+				//   let CAobj=JSON.parse(sessionStorage.getItem('CAobj'));
+					   this.reqCommonName();
+					//    this.CAobj=CAobj;
+			}
+			console.log(path.indexOf('creatSignalCA')||path.indexOf('applyCA'))
         },
     }
 </script>

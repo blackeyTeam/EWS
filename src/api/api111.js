@@ -41,7 +41,7 @@ export const reqInfo={
         params: {}
     },
     upgradeUrl: {
-        url: `${base}/upgrade`,
+        url: `${base}/upgrade.lua`,
         method: "GET",
         params: {}
     },
@@ -61,12 +61,12 @@ export const reqInfo={
         params: {}
     },
     AirptStatu: {
-        url: `${base}/printHead`,
+        url: `${base}/status.lua`,
         method: "GET",
         params: {}
     },
     toggleAirPrt: {
-        url: `${base}printHead`,
+        url: `${base}/printHead.lua`,
         method: "GET",
         params: {}
     },
@@ -76,22 +76,12 @@ export const reqInfo={
         params: {}
     },
     creatSignalCA:{
-        url: `${base}/cert._self.lua`,
+        url: `${base}/cert_self.lua`,
         method: "GET",
         params: {}
     },
     onApplyCA: {
         url: `${base}/reqorder.lua`,
-        method: "GET",
-        params: {}
-    },
-    AirptInfo: {
-        url: `${base}/AirPrint`,
-        method: "GET",
-        params: {}
-    },
-    AirptStatu: {
-        url: `${base}/status.lua`,
         method: "GET",
         params: {}
     },

@@ -3,10 +3,10 @@
     <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
       <!-- <h3 class="title">登录</h3> -->
       <el-form-item prop="account">
-        <el-input type="text" v-model="ruleForm2.account" auto-complete='off' placeholder="用户名"></el-input>
+        <el-input type="text" v-model="ruleForm2.account" auto-complete='off' :placeholder="$t('用户名')" ></el-input>
       </el-form-item>
       <el-form-item prop="checkPass">
-        <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" minlength='6' placeholder="请输入密码"></el-input>
+        <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" minlength='6' :placeholder="$t('请输入')+$t('密码')" ></el-input>
       </el-form-item>
       <!-- <el-checkbox v-model="checked" checked class="remember">记住密码</el-checkbox> -->
       <el-form-item style="width:100%;">
@@ -36,14 +36,14 @@
         rules2: {
           account: [{
               required: true,
-              message: '请输入账号',
+              message:this.$t('请输入')+this.$t('用户名'),
               trigger: 'change'
             },
             //{ validator: validaePass }
           ],
           checkPass: [{
               required: true,
-              message: '请输入密码',
+              message: this.$t('请输入')+this.$t('密码'),
               trigger: 'change'
             },
             //{ validator: validaePass2 }

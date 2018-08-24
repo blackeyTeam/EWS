@@ -141,9 +141,25 @@ export const postHttp = (opt) => {
 }
 export const Http = (opt) => {
     return http(opt).then(res => {
-        if (res && res.data.code == 200) return res.data.data
-        else alert(res.data.message || '接口报错');
+        if (res && res.data.code == 200) { 
+            let Data = opt.T ? res : res.data.data;
+            return Data
+        }else alert(res.data.message || '接口报错');
     })
+}
+export const format = (time) => {
+    var now = new Date(time);
+    var year = now.getFullYear();
+    var mon = now.getMonth() + 1;
+    var date = now.getDate();
+    if (mon < 10) {
+        mon = '0' + mon;
+    };
+    if (date < 10) {
+        date = '0' + date;
+    }
+    var postDate = year + '-' + mon + '-' + date;
+    return postDate;
 }
 
 // export const postHttp = (url) => {

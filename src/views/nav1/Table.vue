@@ -8,10 +8,10 @@
 			<div>
 				<el-form ref="form" label-width="150px" size="mini">
 					<el-form-item :label="key" v-for="(value, key,index) in CAobj" :key="index">
-						<el-input v-model="CAobj[key]" readonly unselectable="on"
-						 :type="'textarea'" autosize resize="none"> 
-						 <!-- :class="{box: (key=='pubKey:'||key=='subject:')}"> -->
+						<el-input v-model="CAobj[key]" readonly unselectable="on" :type="'textarea'" autosize resize="none">
+							<!-- :class="{box: (key=='pubKey:'||key=='subject:')}"> -->
 						</el-input>
+						<span v-show="key=='expireDate:'&&vldTime<=30" class='expireTips'>证书即将过期请及时更新</span>
 					</el-form-item>
 				</el-form>
 			</div>
@@ -22,37 +22,37 @@
 			<div>
 				<form>
 					<!-- <div class="a">
-								<input type="radio" id="creatSignalCA" name="selectCA" ref="creatSignalCA"/>
-								<label for="creatSignalCA">女</label>
-							</div>
-							<div class="a">
-								<input type="radio" id="applyCA" name="selectCA"  ref="applyCA"/>
-								<label for="applyCA">男</label>
-							</div>
-							<div class="a">
-								<input type="radio" id="installCA" name="selectCA" ref="installCA"/>
-								<label for="installCA">男</label>
-							</div>
-							<div class="a">
-								<input type="radio" id="importCA" name="selectCA" ref="installCA" />
-								<label for="importCA">男</label>
-							</div> -->
+											<input type="radio" id="creatSignalCA" name="selectCA" ref="creatSignalCA"/>
+											<label for="creatSignalCA">女</label>
+										</div>
+										<div class="a">
+											<input type="radio" id="applyCA" name="selectCA"  ref="applyCA"/>
+											<label for="applyCA">男</label>
+										</div>
+										<div class="a">
+											<input type="radio" id="installCA" name="selectCA" ref="installCA"/>
+											<label for="installCA">男</label>
+										</div>
+										<div class="a">
+											<input type="radio" id="importCA" name="selectCA" ref="installCA" />
+											<label for="importCA">男</label>
+										</div> -->
 					<input type="radio" name="selectCA" id="creatSignalCA" ref="creatSignalCA" checked="checked">
 					<label for="creatSignalCA">{{$t('创建新的自签名证书')}}
-										<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
-									</label>
+													<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
+												</label>
 					<input type="radio" name="selectCA" id="applyCA" ref="applyCA">
 					<label for="applyCA">{{$t('创建证书申请')}}
-										<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
-									</label>
+													<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
+												</label>
 					<input type="radio" name="selectCA" id="installCA" ref="installCA">
 					<label for="installCA">{{$t('安装证书')}}
-										<p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
-									</label>
+													<p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
+												</label>
 					<input type="radio" name="selectCA" id="importCA" ref="importCA">
 					<label for="importCA">{{$t('导入证书与私钥')}}
-										<p>{{$t('导入证书和私钥以用作嵌入式网络服务器证书。注: 这将覆盖当前安装的打印机证书和私钥')}}</p>
-									</label>
+													<p>{{$t('导入证书和私钥以用作嵌入式网络服务器证书。注: 这将覆盖当前安装的打印机证书和私钥')}}</p>
+												</label>
 					<div class="selectCaButton">
 						<el-button type="primary" @click="onScaSubmit">{{$t('下一步')}}</el-button>
 						<router-link to="/table/main">
@@ -85,11 +85,11 @@
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 					<el-form :inline="true" :model="filters">
 						<!-- <el-form-item>
-									<el-input v-model="filters.name" placeholder="姓名"></el-input>
-								</el-form-item>
-								<el-form-item>
-									<el-button type="primary" v-on:click="getUsers">查询</el-button>
-								</el-form-item> -->
+												<el-input v-model="filters.name" placeholder="姓名"></el-input>
+											</el-form-item>
+											<el-form-item>
+												<el-button type="primary" v-on:click="getUsers">查询</el-button>
+											</el-form-item> -->
 						<el-form-item>
 							<el-button type="primary" @click="handleAdd">{{$t('新增')}}</el-button>
 							<el-button type="infoBtn" @click="batchRemove" :disabled="this.sels.length===0">{{$t('删除')}}</el-button>
@@ -102,22 +102,22 @@
 					<el-table-column type="selection" width="65" label="选择">
 					</el-table-column>
 					<!-- <el-table-column type="index" width="0" >
-							</el-table-column> -->
+										</el-table-column> -->
 					<el-table-column prop="name" :label="$t('用户')" width="150">
 					</el-table-column>
 					<!-- <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-							</el-table-column>
-							<el-table-column prop="age" label="年龄" width="100" sortable>
-							</el-table-column>
-							<el-table-column prop="birth" label="生日" width="120" sortable>
-							</el-table-column> -->
+										</el-table-column>
+										<el-table-column prop="age" label="年龄" width="100" sortable>
+										</el-table-column>
+										<el-table-column prop="birth" label="生日" width="120" sortable>
+										</el-table-column> -->
 					<el-table-column prop="password" :label="$t('密码')" min-width="150">
 					</el-table-column>
 					<!--每条编辑和删除操作-->
 					<!-- <el-table-column label="操作" width="150">
-								<template slot-scope="scope">
-									<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-									<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+											<template slot-scope="scope">
+												<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+												<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 </template>
 				</el-table-column> -->
 			</el-table>
@@ -188,7 +188,8 @@
 		editUser,
 		addUser,
 		Http,
-		reqInfo
+		reqInfo,
+		format
 	} from '../../api/api';
 	
 	export default {
@@ -201,8 +202,7 @@
 				total: 0,
 				page: 1,
 				listLoading: false,
-				sels: [], //列表选中列
-	
+				sels: [], //列表选中列	
 				editFormVisible: false, //编辑界面是否显示
 				editLoading: false,
 				editFormRules: {
@@ -239,18 +239,14 @@
 				},
 				//查看证书信息
 				CAobj: {
-					'version': '1.0.0',
-					'Serial Number': '1.0.0',
-					'Issued Organization': '1.0.0',
-					'Serial Number': '1.0.0',
-					'Serial Number': '1.0.0',
-					'Issued Date': '1.0.0',
-					'Expiration Date': '1.0.0',
-					'Subject': '1.0.0',
-					'Public Key': '1.0.0',
-					'Extension': '1.0.0',
-					'Signature': '1.0.0',
-					'Private Key': '1.0.0',
+					"version:": "3 ",
+					"serial:": "D659E71916106F9D",
+					"issuser:": "/C=aa/ST=ss/L=sss/O=sssss/OU=ssss/CN=ssss/emailAddress=ssss",
+					"dates:": "Aug 19 12:15:59 2018 GMT",
+					"expireDate:": "Aug 19 12:15:59 2019 GMT",
+					"subject:": "/C=aa/ST=ss/L=sss/O=sssss/OU=ssss/CN=ssss/emailAddress=ssss",
+					"pubKey:": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmsam/Zt+mQlVmFu/lsME6zJ5rL9eyllBQoTWRFC4Quo1BBCkFvCCoGguqqVv4C5jVUcyH8TabYuPvk+5p+Xu/ivlcZbV8sW+/3bxW07B66/oGwLhoqmhC1x1V2mmcHZbmAOUtk0YYFsSHGyIz9LTe2JiSYRmdFayz1AK8jlM/Hwi5+H7LSBG/hJZXHZjcFn6tRxnfCztugWx2HLHtRcGVYI2gd6BIYLss1lroKNsJU1/Iir1wN02keQ9hkE0IIfVmSuP3jXwesSMX2h2kHgTwaWSmep4m7hMKcC18buReZ0ErzoBeqsJ7/rUoFvzgkCOcC1aGMfTkvCpcVfGGFJmgQIDAQ",
+					"signal:": " sha256WithRSAEncryption"
 				},
 				form: {
 					name: '',
@@ -262,7 +258,8 @@
 					resource: '',
 					desc: ''
 				},
-	
+				NowDate: '', //severTime
+				vldTime: '' //验证是否30天过期
 			}
 		},
 		methods: {
@@ -337,7 +334,10 @@
 			addSubmit: function() {
 				this.$refs.addForm.validate((valid) => {
 					if (valid) {
-						this.$confirm('确认提交吗？', '提示', {}).then(() => {
+						this.$confirm(this.$t('确认提交') + '?', this.$t('提示'), {
+							confirmButtonText: this.$t('确定'),
+							cancelButtonText: this.$t('取消'),
+						}).then(() => {
 							this.addLoading = true;
 							//NProgress.start();
 							let para = Object.assign({}, this.addForm);
@@ -346,7 +346,7 @@
 								this.addLoading = false;
 								//NProgress.done();
 								this.$message({
-									message: '提交成功',
+									message: this.$('提交成功'),
 									type: 'success'
 								});
 								this.$refs['addForm'].resetFields();
@@ -411,24 +411,31 @@
 			getInfoCA() {
 				let self = this;
 				Http({
-					url: reqInfo.reqInfoCA.url
+					url: reqInfo.reqInfoCA.url,
+					T: true
 				}).then(res => {
 					console.log(res)
-					self.CAobj = res;
-					sessionStorage.setItem('CAobj', JSON.stringify(self.CAobj));
+					self.CAobj = res.data.data;
+					self.NowDate = res.headers.date;
+					console.log(self.NowDate)
+					self.vldTime = new Date(self.CAobj['expireDate:']).getTime() - new Date(self.NowDate).getTime()
+					self.vldTime = Math.floor(self.vldTime / 86400000);
+					console.log(self.vldTime)
+					self.CAobj['dates:'] = format(self.CAobj['dates:']);
+					self.CAobj['expireDate:'] = format(self.CAobj['expireDate:']);
+					// sessionStorage.setItem('CAobj', JSON.stringify(self.CAobj));
 				})
 			}
 		},
 		created() {
 			if (this.$route.path == '/table/infoCA') {
-				let CAobj = JSON.parse(sessionStorage.getItem('CAobj'));
-				!CAobj && this.getInfoCA();
-				this.CAobj = CAobj;
+				this.getInfoCA();
 			}
-			console.log(this.$route)
+			// console.log(this.$route)
 		},
 		mounted() {
-			this.getUsers();
+			(this.$route.path == '/table/main') && this.getUsers();
+	
 		}
 	}
 </script>
@@ -440,14 +447,14 @@
 		margin-bottom: 0;
 		font-weight: bold;
 	}
- .el-textarea__inner {
+	
+	.infoCA .el-textarea__inner {
 		/* height: 24px; */
 		width: 280px;
 		white-space: normal!important;
 		word-wrap: break-word;
 		word-break: break-all;
-        margin-bottom:10px; 
-		background-color: #000!important;
+		margin-bottom: 10px;
 	}
 	
 	.el-form-item__content input.box {
@@ -569,4 +576,11 @@
 		clip: rect(0, 0, 0, 0);
 	}
 	
+	.expireTips {
+		color: red;
+		font-size: 12px;
+		font-weight: normal;
+		margin-top: -10px;
+		display: block;
+	}
 </style>

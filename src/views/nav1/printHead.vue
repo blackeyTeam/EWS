@@ -7,7 +7,7 @@
 		 <li v-for="(value, key,index) in printHead" :key="index" :class="{lastLi:index==3}">
                 <i :class="['el-icon-menu', {'black':key=='BlackCartridge'},{'colorful':key=='colorCartridge'}]"></i><b>{{$t(key)}}</b>
                 <span :class="[value=='ok' ? 'blue':'red']"><i :class="[value=='ok' ? iconTipR :iconTipW]"></i>
-                         <b v-if="value=='ok'||value=='contact_failure'||value=='defective'"> {{$t(value)}}</b>
+                         <b v-if="value=='ok'||value=='contact_failure'||value=='defective'||value=='unknown'"> {{$t(value)}}</b>
                          <b v-if="value=='absent'"> {{$t(value)}}{{$t(key)}}</b>
                          <b v-if="value=='hign_temp'"> {{$t(key)}}{{$t(value)}}</b>
                          <b v-if="value=='incorrect'"> {{$t(value)}}{{$t(key)}}</b>

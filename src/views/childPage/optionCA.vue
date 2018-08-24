@@ -157,10 +157,10 @@ Http
                 labelPosition: 'right',
                 formLabelAlign: {
                     commonName: 'CN',
-                    organizationName: 'ON',
-                    organizationUnitName: 'OUN',
-                    localityName: 'LN',
-                    provienceName: 'PN',
+                    organizationName: 'Hannto Technology Inc',
+                    organizationUnitName: 'Product Department',
+                    localityName: 'SH',
+                    provienceName: 'SH',
                     countryName: 'CN',
     
                 },

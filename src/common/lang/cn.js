@@ -31,7 +31,7 @@ module.exports = {
     'absent': '请插入',
     'hign_temp':'温度过高，请联系客服',
     'incorrect':'请插入原装',
-    'unknown':'unknown',
+    'unknown':'未知',
     '通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件': '通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件',
     'AirPrint™状态': 'AirPrint™状态',
     '打印机Bonjour名称': '打印机Bonjour名称',

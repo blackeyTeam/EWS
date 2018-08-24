@@ -9,7 +9,7 @@
             <li v-for="(value, key,index) in inkStatus" :key="index" :class="{lastLi:index==3}">
                 <i :class="['el-icon-menu', key]"></i>{{$t(key)}}
                 <span :class="[value=='low' ||value=='unknown'? 'red':'blue']">
-                        <i :class="[value=='low' ? iconTipW :iconTipR]"></i>{{$t(value)}}<b v-if="value=='low'">{{$t(key)}}{{$t('瓶')}}</b>
+                        <i :class="[value=='low' ||value=='unknown'? iconTipW :iconTipR]"></i>{{$t(value)}}<b v-if="value=='low'">{{$t(key)}}{{$t('瓶')}}</b>
                 </span>
             </li>
         </ul>

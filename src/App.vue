@@ -162,4 +162,9 @@ body {
     background-color: #23BDDB!important;
 }
 .el-form-item__error{position: static!important;}
+.infoCA .el-textarea__inner {
+		/* height: 24px; */
+		width: 280px;
+        margin-bottom:10px; 
+	}
 </style>

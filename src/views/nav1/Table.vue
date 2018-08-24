@@ -8,7 +8,10 @@
 			<div>
 				<el-form ref="form" label-width="150px" size="mini">
 					<el-form-item :label="key" v-for="(value, key,index) in CAobj" :key="index">
-						<input v-model="CAobj[key]" readonly unselectable="on" :class="{box: (key=='Public Key'||key=='Signature')}">
+						<el-input v-model="CAobj[key]" readonly unselectable="on"
+						 :type="'textarea'" autosize resize="none"> 
+						 <!-- :class="{box: (key=='pubKey:'||key=='subject:')}"> -->
+						</el-input>
 					</el-form-item>
 				</el-form>
 			</div>
@@ -19,37 +22,37 @@
 			<div>
 				<form>
 					<!-- <div class="a">
-						<input type="radio" id="creatSignalCA" name="selectCA" ref="creatSignalCA"/>
-						<label for="creatSignalCA">女</label>
-					</div>
-					<div class="a">
-						<input type="radio" id="applyCA" name="selectCA"  ref="applyCA"/>
-						<label for="applyCA">男</label>
-					</div>
-					<div class="a">
-						<input type="radio" id="installCA" name="selectCA" ref="installCA"/>
-						<label for="installCA">男</label>
-					</div>
-					<div class="a">
-						<input type="radio" id="importCA" name="selectCA" ref="installCA" />
-						<label for="importCA">男</label>
-					</div> -->
+								<input type="radio" id="creatSignalCA" name="selectCA" ref="creatSignalCA"/>
+								<label for="creatSignalCA">女</label>
+							</div>
+							<div class="a">
+								<input type="radio" id="applyCA" name="selectCA"  ref="applyCA"/>
+								<label for="applyCA">男</label>
+							</div>
+							<div class="a">
+								<input type="radio" id="installCA" name="selectCA" ref="installCA"/>
+								<label for="installCA">男</label>
+							</div>
+							<div class="a">
+								<input type="radio" id="importCA" name="selectCA" ref="installCA" />
+								<label for="importCA">男</label>
+							</div> -->
 					<input type="radio" name="selectCA" id="creatSignalCA" ref="creatSignalCA" checked="checked">
 					<label for="creatSignalCA">{{$t('创建新的自签名证书')}}
-								<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
-							</label>
-					<input type="radio" name="selectCA" id="applyCA" ref="applyCA" >
+										<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
+									</label>
+					<input type="radio" name="selectCA" id="applyCA" ref="applyCA">
 					<label for="applyCA">{{$t('创建证书申请')}}
-								<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
-							</label>
-					<input type="radio" name="selectCA" id="installCA" ref="installCA" >
+										<p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
+									</label>
+					<input type="radio" name="selectCA" id="installCA" ref="installCA">
 					<label for="installCA">{{$t('安装证书')}}
-								<p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
-							</label>
+										<p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
+									</label>
 					<input type="radio" name="selectCA" id="importCA" ref="importCA">
 					<label for="importCA">{{$t('导入证书与私钥')}}
-								<p>{{$t('导入证书和私钥以用作嵌入式网络服务器证书。注: 这将覆盖当前安装的打印机证书和私钥')}}</p>
-							</label>
+										<p>{{$t('导入证书和私钥以用作嵌入式网络服务器证书。注: 这将覆盖当前安装的打印机证书和私钥')}}</p>
+									</label>
 					<div class="selectCaButton">
 						<el-button type="primary" @click="onScaSubmit">{{$t('下一步')}}</el-button>
 						<router-link to="/table/main">
@@ -82,11 +85,11 @@
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
 					<el-form :inline="true" :model="filters">
 						<!-- <el-form-item>
-							<el-input v-model="filters.name" placeholder="姓名"></el-input>
-						</el-form-item>
-						<el-form-item>
-							<el-button type="primary" v-on:click="getUsers">查询</el-button>
-						</el-form-item> -->
+									<el-input v-model="filters.name" placeholder="姓名"></el-input>
+								</el-form-item>
+								<el-form-item>
+									<el-button type="primary" v-on:click="getUsers">查询</el-button>
+								</el-form-item> -->
 						<el-form-item>
 							<el-button type="primary" @click="handleAdd">{{$t('新增')}}</el-button>
 							<el-button type="infoBtn" @click="batchRemove" :disabled="this.sels.length===0">{{$t('删除')}}</el-button>
@@ -99,22 +102,22 @@
 					<el-table-column type="selection" width="65" label="选择">
 					</el-table-column>
 					<!-- <el-table-column type="index" width="0" >
-					</el-table-column> -->
+							</el-table-column> -->
 					<el-table-column prop="name" :label="$t('用户')" width="150">
 					</el-table-column>
 					<!-- <el-table-column prop="sex" label="性别" width="100" :formatter="formatSex" sortable>
-					</el-table-column>
-					<el-table-column prop="age" label="年龄" width="100" sortable>
-					</el-table-column>
-					<el-table-column prop="birth" label="生日" width="120" sortable>
-					</el-table-column> -->
+							</el-table-column>
+							<el-table-column prop="age" label="年龄" width="100" sortable>
+							</el-table-column>
+							<el-table-column prop="birth" label="生日" width="120" sortable>
+							</el-table-column> -->
 					<el-table-column prop="password" :label="$t('密码')" min-width="150">
 					</el-table-column>
 					<!--每条编辑和删除操作-->
 					<!-- <el-table-column label="操作" width="150">
-						<template slot-scope="scope">
-							<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-							<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
+								<template slot-scope="scope">
+									<el-button size="small" @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
+									<el-button type="danger" size="small" @click="handleDel(scope.$index, scope.row)">删除</el-button>
 </template>
 				</el-table-column> -->
 			</el-table>
@@ -224,7 +227,7 @@
 				addFormRules: {
 					name: [{
 						required: true,
-						message: this.$t('请输入')+this.$t('用户名'),
+						message: this.$t('请输入') + this.$t('用户名'),
 						trigger: 'blur'
 					}]
 				},
@@ -355,10 +358,10 @@
 				});
 			},
 			handleClose(done) {
-				this.$confirm(this.$t('确认关闭') + '?',{
-					confirmButtonText: this.$t('确定'),
-					cancelButtonText: this.$t('取消'),
-				})
+				this.$confirm(this.$t('确认关闭') + '?', {
+						confirmButtonText: this.$t('确定'),
+						cancelButtonText: this.$t('取消'),
+					})
 					.then(_ => {
 						done();
 						this.addFormVisible = false;
@@ -405,20 +408,22 @@
 					return 'cellBorder'
 				}
 			},
-			getInfoCA(){
-				let self=this;
-                 Http({url: reqInfo.reqInfoCA.url}).then(res=>{
-					 console.log(res)
-					 self.CAobj=res;
-					 sessionStorage.setItem('CAobj',JSON.stringify(self.CAobj));
-				 })
+			getInfoCA() {
+				let self = this;
+				Http({
+					url: reqInfo.reqInfoCA.url
+				}).then(res => {
+					console.log(res)
+					self.CAobj = res;
+					sessionStorage.setItem('CAobj', JSON.stringify(self.CAobj));
+				})
 			}
 		},
 		created() {
-			if(this.$route.path=='/table/infoCA'){
-				  let CAobj=JSON.parse(sessionStorage.getItem('CAobj'));
-					  !CAobj&&this.getInfoCA();
-					   this.CAobj=CAobj;
+			if (this.$route.path == '/table/infoCA') {
+				let CAobj = JSON.parse(sessionStorage.getItem('CAobj'));
+				!CAobj && this.getInfoCA();
+				this.CAobj = CAobj;
 			}
 			console.log(this.$route)
 		},
@@ -435,10 +440,14 @@
 		margin-bottom: 0;
 		font-weight: bold;
 	}
-	
-	.infoCA .el-form-item__content input {
-		height: 24px;
+ .el-textarea__inner {
+		/* height: 24px; */
 		width: 280px;
+		white-space: normal!important;
+		word-wrap: break-word;
+		word-break: break-all;
+        margin-bottom:10px; 
+		background-color: #000!important;
 	}
 	
 	.el-form-item__content input.box {
@@ -473,15 +482,15 @@
 	
 	.selectCA form input:after {
 		width: 6px;
-	  height: 5px;
-	  border-radius: 100%;
-	  background-color: #000;
-	  content: "";
-	  position: absolute;
-	  left: 50%;
-	  top: 50%;
-	  transform: translate(-50%, -50%) scale(0);
-	  transition: transform 0.15s ease-in;
+		height: 5px;
+		border-radius: 100%;
+		background-color: #000;
+		content: "";
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%) scale(0);
+		transition: transform 0.15s ease-in;
 	}
 	
 	.selectCaButton {
@@ -522,7 +531,12 @@
 	.userlist .el-button {
 		margin-right: 20px;
 	}
-	label{padding-left: 67px;position: relative;}
+	
+	label {
+		padding-left: 67px;
+		position: relative;
+	}
+	
 	input[type="radio"]+label::before {
 		content: "\a0";
 		/*不换行空格*/
@@ -538,7 +552,7 @@
 		line-height: 1;
 		box-sizing: border-box;
 		position: absolute;
-		left:10px;
+		left: 10px;
 		top: 4px;
 	}
 	
@@ -554,4 +568,5 @@
 		position: absolute;
 		clip: rect(0, 0, 0, 0);
 	}
+	
 </style>

@@ -64,7 +64,7 @@
 				Rules: {
 					bonjourServiceName: [{
 						required: true,
-						message: '不可为空',
+						message:this.$t('不可为空'),
 						trigger: 'blur'
 					}],
 				},

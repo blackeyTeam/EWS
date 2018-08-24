@@ -115,4 +115,5 @@ module.exports = {
     '请再次输入': 'please retype ',
     '打开': 'open',
     '关闭': 'close',
+    '不可为空': 'Can‘t be empty',
 }

@@ -6,7 +6,7 @@
             <div style="margin: 20px;"></div>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
                 <el-form-item :label="$t('常用名称：')">
-                    <el-input v-model="formLabelAlign.commonName" :placeholder="$t('请输入')+$t('常用名称：')"></el-input>
+                    <el-input v-model="formLabelAlign.commonName"></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('组织机构：')">
                     <el-input v-model="formLabelAlign.organizationName"></el-input>

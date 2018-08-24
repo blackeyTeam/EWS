@@ -1,6 +1,11 @@
 import axios from 'axios';
 import Qs from 'qs';
+// import Vue from 'vue';
+// import VueI18n from 'vue-i18n' ;
+// import { MessageBox, confirm } from 'element-ui';
+// Vue.use(VueI18n);
 // import config from './config';
+// Vue.prototype.$confirm = MessageBox.confirm;
 
 let base = '/api';
 
@@ -144,9 +149,13 @@ export const Http = (opt) => {
         if (res && res.data.code == 200) { 
             let Data = opt.T ? res : res.data.data;
             return Data
-        }else alert(res.data.message || '接口报错');
+        }else {
+            // alert(res.data.message || '接口报错')
+            return { errMsg_flg: res.data.message || '接口报错' }
+        };
     })
 }
+console.log(this)
 export const format = (time) => {
     var now = new Date(time);
     var year = now.getFullYear();

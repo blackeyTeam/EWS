@@ -49,6 +49,7 @@
       changeLan() {
         console.log(this._i18n.locale)
         this._i18n.locale = this.value == 'English' ? 'EN' : 'CN';
+        document.title=this.$t('headTitle')
       }
     }
   };

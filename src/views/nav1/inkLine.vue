@@ -8,7 +8,7 @@
         			<li class='lastLi'><i class="el-icon-menu black "></i>黑色墨水<span>{{inkStatus.black}}</span></li> -->
             <li v-for="(value, key,index) in inkStatus" :key="index" :class="{lastLi:index==3}">
                 <i :class="['el-icon-menu', key]"></i>{{$t(key)}}
-                <span :class="[value=='low' ? 'red':'blue']">
+                <span :class="[value=='low' ||value=='unknown'? 'red':'blue']">
                         <i :class="[value=='low' ? iconTipW :iconTipR]"></i>{{$t(value)}}<b v-if="value=='low'">{{$t(key)}}{{$t('瓶')}}</b>
                 </span>
             </li>

@@ -139,7 +139,7 @@ body {
 		    background-color: #00A6CE!important;
     		border-color: #00A6CE!important;
 	}
-	.cellBorder  .cell{border:1px solid #DEDEDE!important;margin: 0 10px;border-radius: 4px;}
+	.cellBorder  .cell{border:1px solid #DEDEDE!important;margin: 0 10px;border-radius: 4px;height: 31px;}
 	.el-table .cell{line-height: 28px!important;}
 /***PC端居中显示**/
 @media screen and (min-width:860px){/*宽度大于800px时 红色*/

@@ -117,35 +117,58 @@ export const reqInfo={
     },
    
 }
-let config={
+let config = {
 
-transformRequest: [function (data) {
-    return  Qs.stringify(data);
-  }],
+    transformRequest: [function (data) {
+        return Qs.stringify(data);
+    }],
 };
 let http = axios.create(config);
-// reqInfo.reSetPwd.headers = { 'Content-Type': 'application/octet-stream' }
+//reqInfo.reSetPwd.headers = { 'Content-Type': 'multipart/form-data' }
 
 // console.log(config)
 // axios(config);
 // http.interceptors.request.use(function (config) {    
 //     console.log(config)
 //         // config.headers = { 'Content-Type': 'multipart/form-data' }
-		 
+
 //     return config;
 // }, function (err) {
 //     return Promise.reject(err);
 // }); 
 export const getHttp = (opt) => {
     return axios.get(opt.url, { params: opt.params || {} })
-} 
+}
 export const postHttp = (opt) => {
     return axios.post(opt.url, { params: opt.params || {} })
-} 
-export const Http = (opt) => {return http(opt).then(res => { 
-    if (res && res.data.code == 200) return res.data.data
-    else alert( res.data.message||'接口报错');
-})} 
+}
+export const Http = (opt) => {
+    return http(opt).then(res => {
+        if (res && res.data.code == 200) {
+            let Data = opt.T ? res : res.data.data;
+            return Data
+        } else {
+            // alert(res.data.message || '接口报错')
+            return { errMsg_flg: res.data.message || '接口报错' }
+        };
+    })
+}
+console.log(this)
+export const format = (time) => {
+    var now = new Date(time);
+    var year = now.getFullYear();
+    var mon = now.getMonth() + 1;
+    var date = now.getDate();
+    if (mon < 10) {
+        mon = '0' + mon;
+    };
+    if (date < 10) {
+        date = '0' + date;
+    }
+    var postDate = year + '-' + mon + '-' + date;
+    return postDate;
+}
+
 
 // export const postHttp = (url) => {
 //     axios.post(opt.url, { params: opt.params||{} }).then(

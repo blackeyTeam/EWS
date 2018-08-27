@@ -7,10 +7,10 @@
       </el-col>
       <el-col :span="4" class="toggleLang">
         <!-- <el-form ref="form" label-width="80px" >
-  			   <el-form-item :label="delivery==true?'简体中文':'English'">
-  					<el-switch v-model="delivery" @change='changeLan'></el-switch>
-  				</el-form-item>
-  				</el-form> -->
+        			   <el-form-item :label="delivery==true?'简体中文':'English'">
+        					<el-switch v-model="delivery" @change='changeLan'></el-switch>
+        				</el-form-item>
+        				</el-form> -->
         <el-select v-model="value" placeholder="请选择" size="mini" @change='changeLan'>
           <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
           </el-option>
@@ -35,7 +35,7 @@
         collapsed: false,
         delivery: false,
         langNow: '',
-        value:'中文',
+        value: '中文',
         options: [{
           value: '中文',
           label: '中文'
@@ -49,9 +49,20 @@
       changeLan() {
         console.log(this._i18n.locale)
         this._i18n.locale = this.value == 'English' ? 'EN' : 'CN';
-        document.title=this.$t('headTitle')
+        document.title = this.$t('headTitle');
+        sessionStorage.setItem('opt', this.value);
+        sessionStorage.setItem('lang', this._i18n.locale);
+        sessionStorage.setItem('headTitle', this.$t('headTitle'));
       }
-    }
+    },
+    created() { //获取当前语言选项 无则默认中文
+      let opt = sessionStorage.getItem('opt');
+      this.value = opt ? opt : '中文';
+      let lang = sessionStorage.getItem('lang');
+      let headTi = sessionStorage.getItem('headTitle');
+      this._i18n.locale = lang ? lang : 'CN';
+      document.title = headTi ? headTi : this.$t('headTitle');
+    },
   };
 </script>
 

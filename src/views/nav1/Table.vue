@@ -7,11 +7,11 @@
 		<div v-if="$route.params.name=='infoCA'" :class='$route.params.name'>
 			<div>
 				<el-form ref="form" label-width="150px" size="mini">
-					<el-form-item :label="key" v-for="(value, key,index) in CAobj" :key="index">
+					<el-form-item :label="$t(key)" v-for="(value, key,index) in CAobj" :key="index">
 						<el-input v-model="CAobj[key]" readonly unselectable="on" :type="'textarea'" autosize resize="none">
 							<!-- :class="{box: (key=='pubKey:'||key=='subject:')}"> -->
 						</el-input>
-						<span v-show="key=='expireDate:'&&vldTime<=30" class='expireTips'>证书即将过期请及时更新</span>
+						<span v-show="key=='expireDate:'&&vldTime<=30" class='expireTips'>{{$t('expireTip')}}</span>
 					</el-form-item>
 				</el-form>
 			</div>
@@ -79,7 +79,7 @@
 				</div>
 			</div>
 			<!---------用户表格-------->
-			<h4>打印机用户访问权限</h4>
+			<h4>{{$t("打印机用户访问权限")}}</h4>
 			<div class="userlist">
 				<!--工具条-->
 				<el-col :span="24" class="toolbar" style="padding-bottom: 0px;">
@@ -98,7 +98,7 @@
 				</el-col>
 	
 				<!--列表-->
-				<el-table :data="users" highlight-current-row v-loading="listLoading" @selection-change="selsChange" style="width: 100%;text-align: center;" :cell-class-name='cellBox'>
+				<el-table :data="users" highlight-current-row v-loading="listLoading" :empty-text="$t('empty')" @selection-change="selsChange" style="width: 100%;text-align: center;" :cell-class-name='cellBox'>
 					<el-table-column type="selection" width="65" label="选择">
 					</el-table-column>
 					<!-- <el-table-column type="index" width="0" >

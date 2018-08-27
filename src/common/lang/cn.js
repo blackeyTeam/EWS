@@ -12,6 +12,7 @@ module.exports = {
     'Build Date': '构建日期',
     'Check Update': "检查更新",
     'Update Firmware': "更新固件",
+    'tableinfoCA': "证书信息",
     'Estimation only. Actual status may vary.': '仅为估计量，实际墨水量可能有差异。',
     cyan: '青色墨水',
     pinkish: '品红墨水',
@@ -119,6 +120,17 @@ module.exports = {
     '打开': '打开',
     '关闭': '关闭',
     '不可为空': '不可为空',
+    '打印机用户访问权限': '打印机用户访问权限',
+    'empty': '暂无数据',
+    'version:': '版本:',
+    'serial:': '序列号:',
+    'issuser:': '发行者:',
+    'dates:': '签发日期:',
+    'expireDate:': '失效日期:',
+    'subject:': '摘要:',
+    'pubKey:': '公钥:',
+    'signal:': '签名:',
+    'expireTip': '证书即将过期请及时更新',
 
 
 

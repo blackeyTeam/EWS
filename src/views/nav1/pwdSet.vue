@@ -3,24 +3,24 @@
 		<!--查看证书-->
 		<div>
 			<div class="pwd-Set">
-				<el-form :model="useInfo" ref="useInfo" :rules="reSetRules" label-width="140px" size="mini" >
+				<el-form :model="useInfo" ref="useInfo" :rules="reSetRules" label-width="140px" size="mini">
 					<!-- <el-form-item :label="key" v-for="(value, key,index) in useInfo" ::key="index">
-							<input v-model="CAobj[key]" :class="{box: (key=='Public Key'||key=='Signature')}">
-						</el-form-item> -->
+								<input v-model="CAobj[key]" :class="{box: (key=='Public Key'||key=='Signature')}">
+							</el-form-item> -->
 					<div class='titTxt'>
-						<p>{{$t('设置密码可以.....需要此密码。')}}</p>								
+						<p>{{$t('设置密码可以.....需要此密码。')}}</p>
 						<p> {{$t('密码只能包含下列可打印的...下特殊字符')}}</p>
 					</div>
-					<el-form-item :label="$t('用户名')+'：'" >
-					<el-input v-model="useInfo.userName" disabled></el-input>
+					<el-form-item :label="$t('用户名')+'：'">
+						<el-input v-model="useInfo.userName" disabled></el-input>
 					</el-form-item>
-					<el-form-item :label="$t('原始密码')+'：'"  prop="oldpassword">
+					<el-form-item :label="$t('原始密码')+'：'" prop="oldpassword">
 						<el-input v-model="useInfo.oldpassword" type='password' :placeholder="$t('请输入')+$t('原始密码')"></el-input>
 					</el-form-item>
 					<el-form-item :label="$t('新密码')+'：'" prop="password">
 						<el-input v-model="useInfo.password" type='password' :placeholder="$t('请输入')+$t('新密码')"></el-input>
 					</el-form-item>
-					<el-form-item :label="$t('再次输入新密码')+'：'"  prop="repassWord">
+					<el-form-item :label="$t('再次输入新密码')+'：'" prop="repassWord">
 						<el-input v-model="useInfo.repassWord" type='password' :placeholder="$t('请再次输入')+$t('新密码')"></el-input>
 					</el-form-item>
 				</el-form>
@@ -46,7 +46,7 @@
 			var oldpassWd = (rule, value, callback) => {
 				let user = JSON.parse(sessionStorage.getItem('user'));
 				if (value !== user.password)
-					callback(new Error(this.$t('原始密码')+this.$t('输入错误')));
+					callback(new Error(this.$t('原始密码') + this.$t('输入错误')));
 				else callback()
 			};
 			var validatePass = (rule, value, callback) => {
@@ -56,7 +56,7 @@
 			};
 			var passwordRule = (rule, value, callback) => {
 				// if ( ! /^(?=[0-9a-zA-Z@_.]+$)/g.test(value))
-				if (  /[^\x00-\xff]/g.test(value))
+				if (/[^\x00-\xff]/g.test(value))
 					callback(new Error('不可为中文字符'));
 				else callback()
 			};
@@ -71,7 +71,7 @@
 				reSetRules: {
 					oldpassword: [{
 							required: true,
-							message: this.$t('请输入')+this.$t('原始密码'),
+							message: this.$t('请输入') + this.$t('原始密码'),
 							trigger: 'change'
 						},
 						{
@@ -81,7 +81,7 @@
 					],
 					password: [{
 							required: true,
-							message: this.$t('请输入')+this.$t('新密码'),
+							message: this.$t('请输入') + this.$t('新密码'),
 							trigger: 'change'
 						},
 						{
@@ -91,7 +91,7 @@
 					],
 					repassWord: [{
 							required: true,
-							message: this.$t('请再次输入')+this.$t('新密码'),
+							message: this.$t('请再次输入') + this.$t('新密码'),
 							trigger: 'change',
 						},
 						{
@@ -111,9 +111,14 @@
 						reqInfo.reSetPwd.params = this.useInfo;
 						Http(reqInfo.reSetPwd).then(data => {
 							console.log(data)
-							const str = data == 'success' ? this.$t('设置成功') :  this.$t('设置失败');
+							const str = data == 'success' ? this.$t('设置成功') : this.$t('设置失败');
+							let user = {
+								"username": this.useInfo.userName,
+								"password": this.useInfo.password
+							}
+							data == 'success' && sessionStorage.setItem('user',JSON.stringify(user));
 							this.$alert(str, '', {
-								confirmButtonText: this.$t('确定') ,
+								confirmButtonText: this.$t('确定'),
 							});
 						})
 					} else {
@@ -141,7 +146,17 @@
 	.pwd-Set .el-form-item.is-required .el-form-item__label:before {
 		content: '';
 	}
-	.pwd-Set .titTxt{border-bottom: 1px solid #E9E9E9; margin:0 0 30px 0;}
-	.pwd-Set .titTxt p{margin-top: 0;}
-	.pwd-Set  .el-form-item__content{width: 68%}
+	
+	.pwd-Set .titTxt {
+		border-bottom: 1px solid #E9E9E9;
+		margin: 0 0 30px 0;
+	}
+	
+	.pwd-Set .titTxt p {
+		margin-top: 0;
+	}
+	
+	.pwd-Set .el-form-item__content {
+		width: 68%
+	}
 </style>

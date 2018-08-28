@@ -102,7 +102,7 @@
                 <p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
             </div>
             <div class="selectCaButton">
-                <el-upload class="upload-demo" method="post" action="https://192.168.203.247/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
+                <el-upload class="upload-demo" method="post" action="/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
                     accept=".crt">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
                     <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div>

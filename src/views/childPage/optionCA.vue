@@ -229,7 +229,7 @@
             beforeAvatarUpload(file) {
                 const isLt5M = file.size / 1024 / 1024 < 5;
                 if (!isLt5M) {
-                    this.$message.error('上传的证书文件大小不能超过 5MB!');
+                    this.$message.error(this.$t('isLt5M'));
                 }
                 return isLt5M;
             },

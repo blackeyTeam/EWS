@@ -132,6 +132,7 @@ module.exports = {
     'pubKey:': '公钥:',
     'signal:': '签名:',
     'expireTip': '证书即将过期请及时更新',
+    'isLt5M': '上传的证书文件大小不能超过 5MB!',
 
 
 

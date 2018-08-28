@@ -131,4 +131,5 @@ module.exports = {
     'pubKey:': 'pubKey:',
     'signal:': 'signal:',
     'expireTip': 'the certificate is about to expire, please update',
+    'isLt5M': 'The upload certificate file size should not exceed 5MB!',
 }

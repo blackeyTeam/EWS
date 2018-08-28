@@ -110,7 +110,7 @@
             </div>
         </div>
         <!--导入证书与私钥-->
-        <div v-if="$route.params.name=='importCA'" :class='$route.params.name' :key="index">
+        <div v-if="$route.params.name=='importCA'" :class='$route.params.name'>
             <div>
                 <p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
             </div>

@@ -234,9 +234,13 @@
                 return isLt5M;
             },
             //创建自签名证书
-            creatSingleCA() {
+            creatSingleCA(e) {
                 const self = this;
                 self.opDiv = true;
+                let ctg = e.currentTarget;
+                ctg.setAttribute("disabled", true);
+                ctg.classList.remove('el-button--primary');
+                ctg.classList.add('el-button--info');
                 getHttp({
                     url: reqInfo.creatSignalCA.url,
                     params: self.formLabelAlign
@@ -291,7 +295,7 @@
         height: 55px;
         border-bottom: 1px solid #E9E9E9;
     }
-    .applyCA .el-button--info{margin-right: 20px;}
+    .applyCA .el-button--info,.creatSignalCA .el-button--info{margin-right: 20px;}
     .applyCA .el-form-item__label,
     .creatSignalCA .el-form-item__label {
         width: 150px!important;

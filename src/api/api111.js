@@ -95,6 +95,9 @@ export const reqInfo={
         method: "GET",
         params: {}
     },
+    importCApwd: {
+        url: `${base}/cgi-bin/upload_certpass.lua`,
+    },
     reSetPwd: {
         url: `${base}/modify_sys_user.lua`,
         method: "GET",

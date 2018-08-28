@@ -2,13 +2,13 @@
 	<section>
 		<el-form label-width="150px" :model="formLabelAlign" ref="formBox" class='form' :rules="Rules">
 			<!-- <el-form-item :label="key" v-for="(value, key,index) in formLabelAlign"::key="index" >
-															<input  v-model="formLabelAlign[key]" :disabled="setAirPrint"  unselectable="on" >
-													</el-form-item> -->
+																		<input  v-model="formLabelAlign[key]" :disabled="setAirPrint"  unselectable="on" >
+																</el-form-item> -->
 			<p>{{$t('通过 AirPrint™，可从 Apple 支持的产品实现轻松的网络打印—无需安装任何驱动程序或下载任何软件')}}</p>
-			<el-form-item :label="$t('AirPrint™状态')+':'" >
-				<el-input  :value='$t(bonjourStatus)' class='bonjour'></el-input>
+			<el-form-item :label="$t('AirPrint™状态')+':'">
+				<el-input :value='$t(bonjourStatus)' class='bonjour'></el-input>
 			</el-form-item>
-			<el-form-item :label="$t('打印机Bonjour名称')+':'"  prop='bonjourServiceName'>
+			<el-form-item :label="$t('打印机Bonjour名称')+':'" prop='bonjourServiceName'>
 				<el-input v-model="formLabelAlign.bonjourServiceName"></el-input>
 			</el-form-item>
 			<el-form-item :label="$t('打印机位置')+':'">
@@ -55,6 +55,7 @@
 					locationLatitude: '',
 					locationAltitude: '',
 				},
+				encodeForLa:{},
 				bonjourStatus: '',
 				yetformLabel: {},
 				openAirPrint: false,
@@ -64,7 +65,7 @@
 				Rules: {
 					bonjourServiceName: [{
 						required: true,
-						message:this.$t('不可为空'),
+						message: this.$t('不可为空'),
 						trigger: 'blur'
 					}],
 				},
@@ -88,7 +89,7 @@
 					let data;
 					res && res.data.code && (data = res.data)
 					self.openAirPrint = (data.code == 200 && data.data == '打开') ? true : false;
-					self.bonjourStatus=data.data;
+					self.bonjourStatus = data.data;
 					console.log(self.bonjourStatus)
 				}).catch(err => {
 					console.log(err)
@@ -97,8 +98,10 @@
 			},
 			toggleAirPt(value) {
 				this.openAirPrint = value == '打开' ? true : false;
-				let rqUrl= value == '打开' ?reqInfo.openAirPrt.url : reqInfo.closeAirPrt.url;
-				Http({	url: rqUrl })
+				let rqUrl = value == '打开' ? reqInfo.openAirPrt.url : reqInfo.closeAirPrt.url;
+				Http({
+					url: rqUrl
+				})
 			},
 			//设置AirPrint
 			setApt(value) {
@@ -109,13 +112,18 @@
 			//保存设置
 			saveApt() {
 				const self = this;
-				self.formLabelAlign = self.formLabelAlign;
 				self.setAirPrint = false;
 				self.setReadonly(true)
 				sessionStorage.setItem('formLabelAlign', JSON.stringify(self.formLabelAlign));
+				for (const key in self.formLabelAlign) {
+					if (self.formLabelAlign.hasOwnProperty(key)) {
+						self.encodeForLa[encodeURIComponent(key)] = encodeURIComponent(self.formLabelAlign[key])	
+					}
+				}
+				console.log(self.formLabelAlign)
 				getHttp({
 					url: reqInfo.saveAirPrtList.url,
-					params: self.formLabelAlign,
+					params: self.encodeForLa,
 				}).then(res => {
 					// self.opDiv = true;
 					// self.progress = false;
@@ -136,13 +144,13 @@
 			setReadonly(bool) {
 				let inp = this.$refs.formBox.$el.getElementsByTagName('input');
 				if (bool) {
-					[].forEach.apply(inp, [(item,i) => {
+					[].forEach.apply(inp, [(item, i) => {
 						item.setAttribute("disabled", bool);
 						item.removeAttribute("clearable");
 					}])
 				} else {
-					[].forEach.apply(inp, [(item,i) => {
-						i!=0&&item.removeAttribute("disabled");
+					[].forEach.apply(inp, [(item, i) => {
+						i != 0 && item.removeAttribute("disabled");
 						item.setAttribute("clearable", '');
 					}])
 				}

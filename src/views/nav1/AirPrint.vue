@@ -29,8 +29,8 @@
 				<el-button :class="{'el-button--primary':openAirPrint}" :disabled="!openAirPrint" @click="setApt">{{$t('设置')}}</el-button>
 			</div>
 			<div class="selectCaButton" v-if="setAirPrint">
-				<el-button type="primary" @click="saveApt">应用</el-button>
-				<el-button @click="cancleApt">取消</el-button>
+				<el-button type="primary" @click="saveApt">{{$t('应用')}}</el-button>
+				<el-button @click="cancleApt">{{$t('取消')}}</el-button>
 				<!-- <el-button  :class="{'el-button--primary':openAirPrint}" :disabled="!openAirPrint" @click="setApt">设置</el-button> -->
 			</div>
 		</el-form>

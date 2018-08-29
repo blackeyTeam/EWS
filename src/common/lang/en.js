@@ -133,4 +133,5 @@ module.exports = {
     'signal:': 'signal:',
     'expireTip': 'The certificate is about to expire, Please update',
     'isLt5M': 'The upload certificate file size should not exceed 5MB!',
+    '应用' : 'Apply',
 }

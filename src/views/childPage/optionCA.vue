@@ -159,7 +159,7 @@
                 labelPosition: 'right',
                 formLabelAlign: {
                     commonName: '',
-                    organizationName: 'Hannto Technology Inc',
+                    organizationName: 'Hannto Technology Inc.',
                     organizationUnitName: 'Product Department',
                     localityName: 'SH',
                     provienceName: 'SH',

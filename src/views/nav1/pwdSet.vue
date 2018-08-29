@@ -109,8 +109,7 @@
 							console.log(data)
 							const str = data == 'success' ? this.$t('设置成功') : this.$t('设置失败');
 							let user = {
-								"username": this.useInfo.userName,
-								"password": this.useInfo.password
+								"username": this.useInfo.userName
 							}
 							data == 'success' && sessionStorage.setItem('user',JSON.stringify(user));
 							this.$alert(str, '', {

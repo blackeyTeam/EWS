@@ -112,7 +112,7 @@ module.exports = {
     '固件更新成功': 'Firmware Installation success',
     '固件更新失败': 'Firmware Installation Failed',
     '固件是最新版本': 'Firmware is up to date',
-    '有新固件': 'New Firmare Available：',
+    '有新固件': 'New Firmare Available',
     '设置成功':'setting successful ',
     '设置失败':'setting failure ',
     '请输入': 'please input ',

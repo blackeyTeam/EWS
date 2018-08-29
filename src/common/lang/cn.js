@@ -12,7 +12,7 @@ module.exports = {
     'Build Date': '构建日期',
     'Check Update': "检查更新",
     'Update Firmware': "更新固件",
-    'tableinfoCA': "证书信息",
+    'TableInfoCA': "证书信息",
     'Estimation only. Actual status may vary.': '仅为估计量，实际墨水量可能有差异。',
     cyan: '青色墨水',
     pinkish: '品红墨水',

@@ -115,7 +115,7 @@
                 <p>{{$t('输入包含证书和私钥的文件的名称')}}</p>
             </div>
             <div class="selectCaButton">
-                <el-upload class="upload-demo imCAinp" method="post" action="/cgi-bin/upload_certpass.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
+                <el-upload class="upload-demo imCAinp" method="post" action="/cgi-bin/upload_crtpass.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
                 accept=".pfx,.p12">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
                     <!-- <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div> -->

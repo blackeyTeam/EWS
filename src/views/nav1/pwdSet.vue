@@ -73,10 +73,6 @@
 							required: true,
 							message: this.$t('请输入') + this.$t('原始密码'),
 							trigger: 'change'
-						},
-						{
-							validator: oldpassWd,
-							trigger: 'change'
 						}
 					],
 					password: [{

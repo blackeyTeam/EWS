@@ -346,7 +346,7 @@
 								this.addLoading = false;
 								//NProgress.done();
 								this.$message({
-									message: this.$('提交成功'),
+									message: this.$t('提交成功'),
 									type: 'success'
 								});
 								this.$refs['addForm'].resetFields();

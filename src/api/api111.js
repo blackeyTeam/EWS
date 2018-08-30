@@ -1,5 +1,8 @@
 import axios from 'axios';
 import Qs from 'qs';
+import { i18n } from '../main';
+// import VueI18n from 'vue-i18n' ;
+import { MessageBox } from 'element-ui';
 // import config from './config';
 
 // let base = 'https://192.168.203.214';
@@ -65,11 +68,11 @@ export const reqInfo={
         method: "GET",
         params: {}
     },
-    toggleAirPrt: {
-        url: `${base}/printHead.lua`,
-        method: "GET",
-        params: {}
-    },
+    // toggleAirPrt: {
+    //     url: `${base}/printHead.lua`,
+    //     method: "GET",
+    //     params: {}
+    // },
     saveAirPrtList: {
         url: `${base}/add_bonjour.lua`,
         method: "GET",
@@ -151,8 +154,13 @@ export const Http = (opt) => {
             let Data = opt.T ? res : res.data.data;
             return Data
         } else {
-            // alert(res.data.message || '接口报错')
-            return { errMsg_flg: res.data.message || '接口报错' }
+            // return { errMsg_flg: res.data.message || '接口报错' }
+            MessageBox({
+                showClose: true,
+                message: res.data.message || '接口报错',
+                type: 'warning',
+                confirmButtonText: i18n.t('确定')
+            });
         };
     })
 }

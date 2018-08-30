@@ -1,6 +1,6 @@
 <template>
   <el-row class="container">
-    <el-form :model="ruleForm2" :rules="rules2" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
+    <el-form :model="ruleForm2" :rules="rules1" ref="ruleForm2" label-position="left" label-width="0px" class="demo-ruleForm login-container">
       <!-- <h3 class="title">登录</h3> -->
       <el-form-item prop="account">
         <el-input type="text" v-model="ruleForm2.account" auto-complete='off' :placeholder="$t('用户名')"></el-input>
@@ -33,7 +33,12 @@
           account: '',
           checkPass: ''
         },
-        rules2: {
+        checked: true
+      };
+    },
+    computed: {
+      rules1() {
+        return {
           account: [{
               required: true,
               message: this.$t('请输入') + this.$t('用户名'),
@@ -48,9 +53,8 @@
             },
             //{ validator: validaePass2 }
           ]
-        },
-        checked: true
-      };
+        }
+      }
     },
     methods: {
       enterToLogin() {
@@ -91,10 +95,11 @@
                 this.$router.push({
                   path: '/systemUpate'
                 });
-              } else {               
-                this.$alert(this.$t(data['errMsg_flg']) ,this.$t('提示'), {
-                    confirmButtonText: this.$t('确定'),type: 'warning'
-                  })
+              } else {
+                this.$alert(this.$t(data['errMsg_flg']), this.$t('提示'), {
+                  confirmButtonText: this.$t('确定'),
+                  type: 'warning'
+                })
               }
             });
           } else {

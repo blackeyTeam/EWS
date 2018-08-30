@@ -5,8 +5,8 @@
 			<div class="pwd-Set">
 				<el-form :model="useInfo" ref="useInfo" :rules="reSetRules" label-width="140px" size="mini">
 					<!-- <el-form-item :label="key" v-for="(value, key,index) in useInfo" ::key="index">
-								<input v-model="CAobj[key]" :class="{box: (key=='Public Key'||key=='Signature')}">
-							</el-form-item> -->
+											<input v-model="CAobj[key]" :class="{box: (key=='Public Key'||key=='Signature')}">
+										</el-form-item> -->
 					<div class='titTxt'>
 						<p>{{$t('设置密码可以.....需要此密码。')}}</p>
 						<p> {{$t('密码只能包含下列可打印的...下特殊字符')}}</p>
@@ -43,7 +43,20 @@
 	
 	export default {
 		data() {
-			var oldpassWd = (rule, value, callback) => {
+			
+			return {
+				useInfo: {
+					userName: 'admin',
+					oldpassword: '',
+					password: '',
+					repassWord: '',
+				},
+				infoStore: {},			
+			}
+		},
+		computed: {
+			reSetRules() {
+				var oldpassWd = (rule, value, callback) => {
 				let user = JSON.parse(sessionStorage.getItem('user'));
 				if (value !== user.password)
 					callback(new Error(this.$t('原始密码') + this.$t('输入错误')));
@@ -60,21 +73,12 @@
 					callback(new Error('不可为中文字符'));
 				else callback()
 			};
-			return {
-				useInfo: {
-					userName: 'admin',
-					oldpassword: '',
-					password: '',
-					repassWord: '',
-				},
-				infoStore: {},
-				reSetRules: {
+				return {
 					oldpassword: [{
-							required: true,
-							message: this.$t('请输入') + this.$t('原始密码'),
-							trigger: 'change'
-						}
-					],
+						required: true,
+						message: this.$t('请输入') + this.$t('原始密码'),
+						trigger: 'change'
+					}],
 					password: [{
 							required: true,
 							message: this.$t('请输入') + this.$t('新密码'),
@@ -95,8 +99,9 @@
 							trigger: 'change'
 						}
 					],
-				},
-			}
+	
+				}
+			},
 		},
 		methods: {
 			//设置密码
@@ -111,7 +116,7 @@
 							let user = {
 								"username": this.useInfo.userName
 							}
-							data == 'success' && sessionStorage.setItem('user',JSON.stringify(user));
+							data == 'success' && sessionStorage.setItem('user', JSON.stringify(user));
 							this.$alert(str, '', {
 								confirmButtonText: this.$t('确定'),
 							});

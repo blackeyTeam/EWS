@@ -47,8 +47,8 @@
     },
     methods: {
       changeLan() {
-        console.log(this._i18n.locale)
-        this._i18n.locale = this.value == 'English' ? 'EN' : 'CN';
+        
+        this._i18n.locale = this.value == 'English' ? 'EN' : 'CN';console.log(this._i18n.locale)
         document.title = this.$t('headTitle');
         sessionStorage.setItem('opt', this.value);
         sessionStorage.setItem('lang', this._i18n.locale);
@@ -56,11 +56,9 @@
       }
     },
     created() { //获取当前语言选项 无则默认中文
-      let opt = sessionStorage.getItem('opt');
+      let opt = sessionStorage.opt;
       this.value = opt ? opt : '中文';
-      let lang = sessionStorage.getItem('lang');
-      let headTi = sessionStorage.getItem('headTitle');
-      this._i18n.locale = lang ? lang : 'CN';
+      let headTi = sessionStorage.headTitle;
       document.title = headTi ? headTi : this.$t('headTitle');
     },
   };

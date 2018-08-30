@@ -1,12 +1,12 @@
 import axios from 'axios';
 import Qs from 'qs';
-// import Vue from 'vue';
+import {i18n} from '../main';
 // import VueI18n from 'vue-i18n' ;
-// import { MessageBox, confirm } from 'element-ui';
+import { MessageBox } from 'element-ui';
 // Vue.use(VueI18n);
 // import config from './config';
 // Vue.prototype.$confirm = MessageBox.confirm;
-
+// import { Message, confirm } from "element-ui";
 let base = '/api';
 
 // export const requestLogin = params => { return axios.get(`${base}/login`, { params: params}).then(res => res.data); };
@@ -153,8 +153,13 @@ export const Http = (opt) => {
             let Data = opt.T ? res : res.data.data;
             return Data
         }else {
-            // alert(res.data.message || '接口报错')
-            return { errMsg_flg: res.data.message || '接口报错' }
+            // return { errMsg_flg: res.data.message || '接口报错' }
+            MessageBox({
+                showClose: true,
+                message: res.data.message || '接口报错' ,
+                type: 'warning',
+                confirmButtonText: i18n.t('确定')
+            });
         };
     })
 }

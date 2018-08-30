@@ -43,7 +43,7 @@ router.beforeEach((to, from, next) => {
 //NProgress.done();
 //});
 /*---------使用语言包-----------*/
-const i18n = new VueI18n({
+export const i18n = new VueI18n({
     locale: sessionStorage.lang||'CN', // 语言标识
         messages: {
             'CN': require('./common/lang/cn'), // 中文语言包

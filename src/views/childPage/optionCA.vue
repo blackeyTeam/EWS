@@ -25,9 +25,9 @@
                 </el-form-item>
                 <el-form-item :label="$t('签名算法：')">
                     <!-- <select class="input-xlarge single" name="签名算法">
-                                            <option value="SHA256">SHA256</option>
-                                            <option value="Your">SHA256</option>
-                                        </select> -->
+                                                <option value="SHA256">SHA256</option>
+                                                <option value="Your">SHA256</option>
+                                            </select> -->
                     <el-select v-model="valueSHA">
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
@@ -66,9 +66,9 @@
                 </el-form-item>
                 <el-form-item :label="$t('签名算法：')">
                     <!-- <select class="input-xlarge single" name="签名算法">
-                                            <option value="SHA256">SHA256</option>
-                                            <option value="Your">SHA256</option>
-                                        </select> -->
+                                                <option value="SHA256">SHA256</option>
+                                                <option value="Your">SHA256</option>
+                                            </select> -->
                     <el-select v-model="valueSHA">
                         <el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
                         </el-option>
@@ -102,8 +102,7 @@
                 <p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
             </div>
             <div class="selectCaButton">
-                <el-upload class="upload-demo" method="post" action="/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
-                    accept=".crt">
+                <el-upload class="upload-demo" method="post" action="/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload" accept=".crt">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
                     <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div>
                 </el-upload>
@@ -116,7 +115,7 @@
             </div>
             <div class="selectCaButton">
                 <el-upload class="upload-demo imCAinp" method="post" action="/cgi-bin/upload_crtpass.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
-                accept=".pfx,.p12">
+                    accept=".pfx,.p12">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
                     <!-- <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div> -->
                 </el-upload>
@@ -188,12 +187,14 @@
                 ctg.classList.remove('el-button--primary');
                 ctg.classList.add('el-button--info');
                 // console.log(e.currentTarget)
-                getHttp({
+                Http({
                     url: reqInfo.onApplyCA.url,
                     params: self.formLabelAlign
                 }).then(res => {
                     self.opDiv = false;
-                    self.$router.push('/table/optionCA/submit')
+                    if (res) {
+                        self.$router.push('/table/optionCA/submit')
+                    }
                 }).catch(function(error) {
                     alert(error);
                 })
@@ -235,28 +236,29 @@
             },
             //创建自签名证书
             creatSingleCA(e) {
-                const self = this;
-                self.opDiv = true;
+                const self = this;              
                 let ctg = e.currentTarget;
                 ctg.setAttribute("disabled", true);
                 ctg.classList.remove('el-button--primary');
                 ctg.classList.add('el-button--info');
-                getHttp({
+                Http({
                     url: reqInfo.creatSignalCA.url,
                     params: self.formLabelAlign
                 }).then(res => {
-                    self.progress = false;
+                    console.log(res)
+                   res&&(self.progress = false,self.opDiv = true);
                 }).catch(function(error) {
                     alert(error);
                 })
             }, //导入证书
             importCASub() {
-                const self=this;
-                getHttp({
+                const self = this;
+                Http({
                     url: reqInfo.importCApwd.url,
-                    params:{passwd:self.importPwd} 
-                }).then(res => {
-                }).catch(function(error) {
+                    params: {
+                        passwd: self.importPwd
+                    }
+                }).then(res => {}).catch(function(error) {
                     // alert(error);
                 })
             },
@@ -295,7 +297,12 @@
         height: 55px;
         border-bottom: 1px solid #E9E9E9;
     }
-    .applyCA .el-button--info,.creatSignalCA .el-button--info{margin-right: 20px;}
+    
+    .applyCA .el-button--info,
+    .creatSignalCA .el-button--info {
+        margin-right: 20px;
+    }
+    
     .applyCA .el-form-item__label,
     .creatSignalCA .el-form-item__label {
         width: 150px!important;

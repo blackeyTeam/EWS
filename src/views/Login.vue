@@ -23,7 +23,6 @@
     reqInfo,
     Http
   } from '../api/api';
-  
   //import NProgress from 'nprogress'
   export default {
     data() {
@@ -85,7 +84,7 @@
             Http(reqInfo.requestLogin).then(data => {
               this.logining = false;
               //NProgress.done();            
-              if (data && !data['errMsg_flg']) {
+              if (data) {
                 let {
                   msg,
                   code,
@@ -95,11 +94,6 @@
                 this.$router.push({
                   path: '/systemUpate'
                 });
-              } else {
-                this.$alert(this.$t(data['errMsg_flg']), this.$t('提示'), {
-                  confirmButtonText: this.$t('确定'),
-                  type: 'warning'
-                })
               }
             });
           } else {

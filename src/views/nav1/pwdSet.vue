@@ -112,11 +112,11 @@
 						reqInfo.reSetPwd.params = this.useInfo;
 						Http(reqInfo.reSetPwd).then(data => {
 							console.log(data)
-							const str = data == 'success' ? this.$t('设置成功') : this.$t('设置失败');
+							const str = data.data == 'success' ? this.$t('设置成功') : this.$t('设置失败');
 							let user = {
 								"username": this.useInfo.userName
 							}
-							data == 'success' && sessionStorage.setItem('user', JSON.stringify(user));
+							data.data == 'success' && sessionStorage.setItem('user', JSON.stringify(user));
 							this.$alert(str, '', {
 								confirmButtonText: this.$t('确定'),
 							});

@@ -84,12 +84,12 @@
             Http(reqInfo.requestLogin).then(data => {
               this.logining = false;
               //NProgress.done();            
-              if (data) {
+              if (data.data) {
                 let {
                   msg,
                   code,
                   user
-                } = data;
+                } = data.data;
                 sessionStorage.setItem('user', JSON.stringify(user));
                 this.$router.push({
                   path: '/systemUpate'

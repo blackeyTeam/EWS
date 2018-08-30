@@ -76,7 +76,7 @@
 			AirptInfo: (self) => {
 	
 				Http(reqInfo.AirptInfo).then(data => {
-					self.formLabelAlign = data;
+					self.formLabelAlign = data.data;
 					console.log(data)
 				})
 				self.setReadonly(true)

@@ -415,7 +415,7 @@
 					T: true
 				}).then(res => {
 					console.log(res)
-					self.CAobj = res.data.data;
+					self.CAobj = res.data.data.data;
 					self.NowDate = res.headers.date;
 					console.log(self.NowDate)
 					self.vldTime = new Date(self.CAobj['expireDate:']).getTime() - new Date(self.NowDate).getTime()

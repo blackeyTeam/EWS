@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Qs from 'qs';
-import { i18n } from '../main';
+import {i18n} from '../main';
 // import VueI18n from 'vue-i18n' ;
 import { MessageBox } from 'element-ui';
 // import config from './config';
@@ -151,10 +151,11 @@ export const postHttp = (opt) => {
 export const Http = (opt) => {
     return http(opt).then(res => {
         if (res && res.data.code == 200) {
-            let Data = opt.T ? res : res.data.data;
-            return Data
+            var Data = opt.T ? res : res.data.data;
+            var code = true;
         } else {
             // return { errMsg_flg: res.data.message || '接口报错' }
+            var code = false;
             MessageBox({
                 showClose: true,
                 message: res.data.message || '接口报错',
@@ -162,6 +163,7 @@ export const Http = (opt) => {
                 confirmButtonText: i18n.t('确定')
             });
         };
+        return { data: Data, code: code }
     })
 }
 console.log(this)

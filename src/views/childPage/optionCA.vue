@@ -192,7 +192,7 @@
                     params: self.formLabelAlign
                 }).then(res => {
                     self.opDiv = false;
-                    if (res) {
+                    if (res.code) {
                         self.$router.push('/table/optionCA/submit')
                     }
                 }).catch(function(error) {
@@ -246,7 +246,7 @@
                     params: self.formLabelAlign
                 }).then(res => {
                     console.log(res)
-                   res&&(self.progress = false,self.opDiv = true);
+                   res.code&&(self.progress = false,self.opDiv = true);
                 }).catch(function(error) {
                     alert(error);
                 })
@@ -269,7 +269,7 @@
                     url: reqInfo.reqCaCommonName.url
                 }).then(res => {
                     console.log(res)
-                    self.formLabelAlign.commonName = res;
+                    self.formLabelAlign.commonName = res.data;
                 })
             },
             popDiv() {

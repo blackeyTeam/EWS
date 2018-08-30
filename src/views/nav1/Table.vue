@@ -239,14 +239,14 @@
 				},
 				//查看证书信息
 				CAobj: {
-					"version:": "3 ",
-					"serial:": "D659E71916106F9D",
-					"issuser:": "/C=aa/ST=ss/L=sss/O=sssss/OU=ssss/CN=ssss/emailAddress=ssss",
-					"dates:": "Aug 19 12:15:59 2018 GMT",
-					"expireDate:": "Aug 19 12:15:59 2019 GMT",
-					"subject:": "/C=aa/ST=ss/L=sss/O=sssss/OU=ssss/CN=ssss/emailAddress=ssss",
-					"pubKey:": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAmsam/Zt+mQlVmFu/lsME6zJ5rL9eyllBQoTWRFC4Quo1BBCkFvCCoGguqqVv4C5jVUcyH8TabYuPvk+5p+Xu/ivlcZbV8sW+/3bxW07B66/oGwLhoqmhC1x1V2mmcHZbmAOUtk0YYFsSHGyIz9LTe2JiSYRmdFayz1AK8jlM/Hwi5+H7LSBG/hJZXHZjcFn6tRxnfCztugWx2HLHtRcGVYI2gd6BIYLss1lroKNsJU1/Iir1wN02keQ9hkE0IIfVmSuP3jXwesSMX2h2kHgTwaWSmep4m7hMKcC18buReZ0ErzoBeqsJ7/rUoFvzgkCOcC1aGMfTkvCpcVfGGFJmgQIDAQ",
-					"signal:": " sha256WithRSAEncryption"
+					"version:": "",
+					"serial:": "",
+					"issuser:": "",
+					"dates:": "",
+					"expireDate:": "",
+					"subject:": "",
+					"pubKey:": "",
+					"signal:": ""
 				},
 				form: {
 					name: '',

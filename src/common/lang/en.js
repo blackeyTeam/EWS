@@ -40,8 +40,8 @@ module.exports = {
     '地理位置（经度）': 'Geo Location(Latitude)',
     '地理位置（维度）': 'Geo Location(Longitude',
     '地理位置（海拔）': 'Geo Location(Altitude)',
-    '打开AirPrint™': 'open AirPrint™',
-    '关闭AirPrint™': 'close AirPrint™',
+    '打开AirPrint™': 'Open AirPrint™',
+    '关闭AirPrint™': 'Close AirPrint™',
     '设置': 'Edit Settings',
     '默认情况下，会创建预安装的自签名打印机证书来标识此打印机您可以更改此证书，以便更精确地标识打印机并更新证书的有效时间': 'By default, a pre-installed self-signed printer certificate is created to identify this printer. You can change this certificate to more accurately identify the printer and to update the length of time the certificate is valid.',
     '配置管理': 'Configure',
@@ -82,7 +82,7 @@ module.exports = {
     '常用名称：': 'CommonName：',
     '组织机构：': 'Organization：',
     '部门：': 'Organization Unit：',
-    '市／县：': 'Citi / Locality：',
+    '市／县：': 'City / Locality：',
     '省 / 直辖市 / 自治区：': 'State / Province：',
     '国家／地区：': 'Country / Region：',
     '签名算法：': 'SignatureAlgorithm：',
@@ -113,6 +113,7 @@ module.exports = {
     '固件更新成功': 'Firmware Installation success',
     '固件更新失败': 'Firmware Installation Failed',
     '固件是最新版本': 'Firmware is up to date',
+    '固件升级中!' : 'Firmware Installing!',
     '有新固件': 'New Firmare Available',
     '设置成功':'Setting Successful ',
     '设置失败':'Setting Failure ',
@@ -134,4 +135,9 @@ module.exports = {
     'expireTip': 'The certificate is about to expire, Please update',
     'isLt5M': 'The upload certificate file size should not exceed 5MB!',
     '应用' : 'Apply',
+    '认证失败' : 'Login Failed',
+    '证书请求生成失败' : 'Certificate Request Order General Failed',
+    '证书生成失败' : 'Certificate General Failed',
+    '请求失败' : 'Order Failed'
+
 }

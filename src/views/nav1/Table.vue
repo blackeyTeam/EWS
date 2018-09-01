@@ -416,7 +416,7 @@
 				}).then(res => {
 					console.log(res)
 					self.CAobj = res.data.data.data;
-					self.NowDate = res.headers.date;
+					self.NowDate = self.CAobj.date;
 					console.log(self.NowDate)
 					self.vldTime = new Date(self.CAobj['expireDate:']).getTime() - new Date(self.NowDate).getTime()
 					self.vldTime = Math.floor(self.vldTime / 86400000);

@@ -163,11 +163,14 @@
                     localityName: 'SH',
                     provienceName: 'SH',
                     countryName: 'CN',
-    
                 },
+                encodeForLa: {},
                 options: [{
                     value: 'SHA256',
                     label: 'SHA256'
+                },{
+                    value: 'SHA384',
+                    label: 'SHA384'
                 }],
                 valueSHA: 'SHA256', //签名下拉选项值
                 fileList: [], //证书载体
@@ -186,10 +189,16 @@
                 ctg.setAttribute("disabled", true);
                 ctg.classList.remove('el-button--primary');
                 ctg.classList.add('el-button--info');
+                for (const key in self.formLabelAlign) {
+                    if (self.formLabelAlign.hasOwnProperty(key)) {
+                        self.encodeForLa[encodeURIComponent(key)] = encodeURIComponent(self.formLabelAlign[key])
+                    }
+                }
+                self.encodeForLa['valueSHA']=self.valueSHA
                 // console.log(e.currentTarget)
                 Http({
                     url: reqInfo.onApplyCA.url,
-                    params: self.formLabelAlign
+                    params: self.encodeForLa
                 }).then(res => {
                     self.opDiv = false;
                     if (res.code) {
@@ -241,9 +250,15 @@
                 ctg.setAttribute("disabled", true);
                 ctg.classList.remove('el-button--primary');
                 ctg.classList.add('el-button--info');
+                for (const key in self.formLabelAlign) {
+                    if (self.formLabelAlign.hasOwnProperty(key)) {
+                        self.encodeForLa[encodeURIComponent(key)] = encodeURIComponent(self.formLabelAlign[key])
+                    }
+                }
+                self.encodeForLa['valueSHA']=self.valueSHA
                 Http({
                     url: reqInfo.creatSignalCA.url,
-                    params: self.formLabelAlign
+                    params: self.encodeForLa
                 }).then(res => {
                     console.log(res)
                    res.code&&(self.progress = false,self.opDiv = true);
@@ -259,7 +274,7 @@
                         passwd: self.importPwd
                     }
                 }).then(res => {}).catch(function(error) {
-                    // alert(error);
+                    alert(error);
                 })
             },
             //获取证书常用名称

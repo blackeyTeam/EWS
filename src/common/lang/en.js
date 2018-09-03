@@ -144,6 +144,5 @@ module.exports = {
     '证书上传成功': 'Certificate Upload Failed',
     '确定移除': 'Confirm remove',
     '限制一个文件': 'Allow One File',
-    'tableinfoCA' : 'View Certificate'
 
 }

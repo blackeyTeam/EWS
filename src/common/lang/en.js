@@ -141,5 +141,8 @@ module.exports = {
     '证书生成失败' : 'Certificate General Failed',
     '请求失败' : 'Order Failed',
     '创建证书申请': 'Create a Certificate Request',
+    '证书上传成功': 'Certificate Upload Failed',
+    '确定移除': 'Confirm remove',
+    '限制一个文件': 'Allow One File'
 
 }

@@ -105,6 +105,7 @@ module.exports = {
     tablemain: 'Certificate Management',
     pwdSet: 'Change Password',
     tableselectCA: 'Printer Certificate Options',
+    tableoptionCAsubmit: 'Create a Certificate Request',
     tableoptionCAcreatSignalCA: 'Create a New Self-Signed Certificate',
     tableoptionCAapplyCA: 'Create a Certificate Request',
     tableoptionCAinstallCA: 'Install a Certificate',
@@ -138,6 +139,7 @@ module.exports = {
     '认证失败' : 'Login Failed',
     '证书请求生成失败' : 'Certificate Request Order General Failed',
     '证书生成失败' : 'Certificate General Failed',
-    '请求失败' : 'Order Failed'
+    '请求失败' : 'Order Failed',
+    '创建证书申请': 'Create a Certificate Request',
 
 }

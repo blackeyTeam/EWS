@@ -107,6 +107,7 @@ module.exports = {
     tableselectCA:'证书配置选项',
     tableoptionCAcreatSignalCA:'创建新的自签名证书',
     tableoptionCAapplyCA: '创建证书申请',
+    tableoptionCAsubmit: '创建证书申请',
     tableoptionCAinstallCA: '安装证书',
     tableoptionCAimportCA: '导入证书与私钥',
     '固件下载中': '固件下载中',
@@ -128,13 +129,13 @@ module.exports = {
     'issuser:': '发行者:',
     'dates:': '签发日期:',
     'expireDate:': '失效日期:',
-    'subject:': '主题:',
+    'subject:': '摘要:',
     'pubKey:': '公钥:',
     'signal:': '签名:',
     'expireTip': '证书即将过期请及时更新',
     'isLt5M': '上传的证书文件大小不能超过 5MB!',
     '应用' : '应用',
-    'tableinfoCA' : '证书信息'
+    'tableinfoCA' : ''
 
 
 }

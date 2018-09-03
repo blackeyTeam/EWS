@@ -102,7 +102,7 @@
                 <p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
             </div>
             <div class="selectCaButton">
-                <el-upload class="upload-demo" method="post" action="/cgi-bin/upload_crt.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload" accept=".crt">
+                <el-upload class="upload-demo" method="post" action="/cgi-bin/upload_crt.lua" :on-success = 'handleSuccess' :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload" accept=".crt">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
                     <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div>
                 </el-upload>
@@ -114,7 +114,7 @@
                 <p>{{$t('输入包含证书和私钥的文件的名称')}}</p>
             </div>
             <div class="selectCaButton">
-                <el-upload class="upload-demo imCAinp" method="post" action="/cgi-bin/upload_crtpass.lua" :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
+                <el-upload class="upload-demo imCAinp" method="post" action="/cgi-bin/upload_crtpass.lua" :on-success = 'handleSuccess' :on-preview="handlePreview" :before-remove="beforeRemove" multiple :limit="1" :on-exceed="handleExceed" :file-list="fileList" :before-upload="beforeAvatarUpload"
                     accept=".pfx,.p12">
                     <el-button size="small" type="primary">{{$t('上传证书')}}</el-button>
                     <!-- <div slot="tip" class="el-upload__tip">( {{$t('限制份数：')}} 1 )</div> -->
@@ -150,7 +150,8 @@
         reqInfo,
         getHttp,
         postHttp,
-        Http
+        Http,
+        uploadRes
     } from '../../api/api';
     export default {
         data() {
@@ -228,12 +229,16 @@
             handlePreview(file) {
                 console.log(file);
             },
+            handleSuccess(res){
+                uploadRes(res)
+            },
             handleExceed(files, fileList) {
-                this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+                //this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
+                this.$confirm(this.$t('限制一个文件'))
             },
             beforeRemove(file, fileList) {
                 if (file && file.status === "success") {
-                    return this.$confirm(`确定移除 ${ file.name }？`); //删除
+                    return this.$confirm(this.$t('确定移除') + ` ${ file.name }？`); //删除
                 }
             },
             beforeAvatarUpload(file) {
@@ -273,7 +278,7 @@
                     params: {
                         passwd: self.importPwd
                     }
-                }).then(res => {}).catch(function(error) {
+                }).catch(function(error) {
                     alert(error);
                 })
             },

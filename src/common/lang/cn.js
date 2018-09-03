@@ -129,13 +129,12 @@ module.exports = {
     'issuser:': '发行者:',
     'dates:': '签发日期:',
     'expireDate:': '失效日期:',
-    'subject:': '摘要:',
+    'subject:': '主题:',
     'pubKey:': '公钥:',
     'signal:': '签名:',
     'expireTip': '证书即将过期请及时更新',
     'isLt5M': '上传的证书文件大小不能超过 5MB!',
     '应用' : '应用',
-    'tableinfoCA' : ''
-
+    'tableinfoCA' : '查看证书'
 
 }

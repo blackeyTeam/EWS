@@ -84,7 +84,7 @@
             Http(reqInfo.requestLogin).then(data => {
               this.logining = false;
               //NProgress.done();            
-              if (data.data) {
+              if (data.code) {
                 let {
                   msg,
                   code,
@@ -94,6 +94,8 @@
                 this.$router.push({
                   path: '/systemUpate'
                 });
+              } else {
+                document.onkeydown = null
               }
             });
           } else {

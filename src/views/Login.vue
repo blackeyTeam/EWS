@@ -81,10 +81,11 @@
             reqInfo.requestLogin.headers = {
               'Content-Type': 'multipart/form-data'
             }
+            reqInfo.requestLogin.cab = 1;
             Http(reqInfo.requestLogin).then(data => {
               this.logining = false;
               //NProgress.done();            
-              if (data.code) {
+              if (data.data) {
                 let {
                   msg,
                   code,
@@ -95,7 +96,15 @@
                   path: '/systemUpate'
                 });
               } else {
-                document.onkeydown = null
+                document.onkeydown = null;
+                this.$alert( this.$t(data.message),{
+                  confirmButtonText: this.$t('确定'),
+                  type: 'warning',
+                  showClose: false,
+                  callback: action => {
+                    _this.enterToLogin();
+                  }
+                });
               }
             });
           } else {

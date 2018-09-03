@@ -98,7 +98,7 @@
 			},
 			toggleAirPt(value) {
 				this.openAirPrint = value == '打开' ? true : false;
-				this.bonjourStatus = value;
+				this.bonjourStatus = value == '打开' ? true : false;
 				let rqUrl = value == '打开' ? reqInfo.openAirPrt.url : reqInfo.closeAirPrt.url;
 				Http({
 					url: rqUrl

@@ -23,19 +23,19 @@
 				<form>
 					<input type="radio" name="selectCA" id="creatSignalCA" ref="creatSignalCA" checked="checked">
 					<label for="creatSignalCA">{{$t('创建新的自签名证书')}}
-                        <p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
+                        <p style="margin-bottom: 20px;">{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
                     </label>
-					<input type="radio" name="selectCA" id="applyCA" ref="applyCA">
+					<input type="radio" name="selectCA" id="applyCA" ref="applyCA" >
 					<label for="applyCA">{{$t('创建证书申请')}}
-                        <p>{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
+                        <p style="margin-bottom: 20px;">{{$t('创建自签名证书并覆盖当前安装的打印机证书')}}</p>
                     </label>
 					<input type="radio" name="selectCA" id="installCA" ref="installCA">
 					<label for="installCA">{{$t('安装证书')}}
-                        <p>{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
+                        <p style="margin-bottom: 20px;">{{$t('安装证书颁发机构为您创建的证书（注: 必须已使用此打印机生成的最新证书申请创建证书）')}}</p>
                     </label>
 					<input type="radio" name="selectCA" id="importCA" ref="importCA">
 					<label for="importCA">{{$t('导入证书与私钥')}}
-                        <p>{{$t('导入证书和私钥以用作嵌入式网络服务器证书。注: 这将覆盖当前安装的打印机证书和私钥')}}</p>
+                        <p style="margin-bottom: 20px;">{{$t('导入证书和私钥以用作嵌入式网络服务器证书。注: 这将覆盖当前安装的打印机证书和私钥')}}</p>
                     </label>
 					<div class="selectCaButton">
 						<el-button type="primary" @click="onScaSubmit">{{$t('下一步')}}</el-button>

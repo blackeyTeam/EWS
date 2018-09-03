@@ -4,8 +4,8 @@
         <div v-if="$route.params.name=='creatSignalCA'" :class='$route.params.name'>
             <div class='titTxt'>{{$t('在下面输入申请的信息（注: 创建新的证书请求时，如有先前的请求将被擦除）')}}</div>
             <div style="margin: 20px;"></div>
-            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
-                <el-form-item :label="$t('常用名称：')">
+            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" :rules="Rules">
+                <el-form-item :label="$t('常用名称：')" prop='commonName'>
                     <el-input v-model="formLabelAlign.commonName"></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('组织机构：')">
@@ -45,9 +45,9 @@
         <div v-if="$route.params.name=='applyCA'" :class='$route.params.name'>
             <div class='titTxt'>{{$t('在下面输入申请的信息（注: 创建新的证书请求时，如有先前的请求将被擦除）')}}</div>
             <div style="margin: 20px;"></div>
-            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+            <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" :rules="Rules">
                 <el-form-item :label="$t('常用名称：')">
-                    <el-input v-model="formLabelAlign.commonName" placeholder="请输入常用名称"></el-input>
+                    <el-input v-model="formLabelAlign.commonName" placeholder="请输入常用名称" prop='commonName'></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('组织机构：')">
                     <el-input v-model="formLabelAlign.organizationName"></el-input>
@@ -178,6 +178,13 @@
                 importPwd: '',
                 opDiv: false,
                 progress: true,
+                Rules: {
+                    commonName: [{
+                        required: true,
+                        message: this.$t('不可为空'),
+                        trigger: 'blur'
+                    }],
+                },
     
             };
         },

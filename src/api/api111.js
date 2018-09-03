@@ -152,20 +152,31 @@ export const Http = (opt) => {
     return http(opt).then(res => {
         if (res && res.data.code == 200) {
             var Data = opt.T ? res : res.data.data;
-            var code = true;
-        } else {
+            var code=true;
+        }else {
             // return { errMsg_flg: res.data.message || '接口报错' }
             var code = false;
-            MessageBox({
+            !opt.cab&&MessageBox({
                 showClose: true,
-                message: res.data.message || '接口报错',
+                message: res.data.message || '接口报错' ,
                 type: 'warning',
                 confirmButtonText: i18n.t('确定')
             });
         };
-        return { data: Data, code: code }
+        return { data: Data, code: code,message: res.data.message }
     })
 }
+export const uploadRes = (res) =>{
+    res = res.replace(/\s+/g,"");
+    console.log(res)
+    MessageBox({
+        showClose: true,
+        message: i18n.t(res) || '接口报错',
+        type: 'warning',
+        confirmButtonText: i18n.t('确定')
+    });
+}
+
 console.log(this)
 export const format = (time) => {
     var now = new Date(time);

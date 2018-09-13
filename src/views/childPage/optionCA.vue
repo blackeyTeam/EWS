@@ -47,7 +47,7 @@
             <div style="margin: 20px;"></div>
             <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign" :rules="Rules">
                 <el-form-item :label="$t('常用名称：')">
-                    <el-input v-model="formLabelAlign.commonName" placeholder="请输入常用名称" prop='commonName'></el-input>
+                    <el-input v-model="formLabelAlign.commonName" prop='commonName'></el-input>
                 </el-form-item>
                 <el-form-item :label="$t('组织机构：')">
                     <el-input v-model="formLabelAlign.organizationName"></el-input>
@@ -126,7 +126,7 @@
                 </el-form>
             </div>
             <div class="selectCaButton">
-                <el-button type="primary" @click="importCASub">{{$t('完成')}}</el-button>
+                <el-button type="primary" @click="importCASub">{{$t('应用')}}</el-button>
                 <router-link to="/table/selectCA">
                     <el-button type="infoBtn">{{$t('取消')}}</el-button>
                 </router-link>
@@ -152,7 +152,7 @@
         postHttp,
         Http,
         uploadRes
-    } from '../../api/api';
+    } from '../../api/api111';
     export default {
         data() {
             return {
@@ -241,11 +241,21 @@
             },
             handleExceed(files, fileList) {
                 //this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`);
-                this.$confirm(this.$t('限制一个文件'))
+                this.$confirm(this.$t('限制一个文件'),
+                   this.$t('提示'), {
+                       confirmButtonText: this.$t('确定'),
+                       cancelButtonText: this.$t('取消'),
+                       type: 'warning'
+                   }); //删除
             },
             beforeRemove(file, fileList) {
                 if (file && file.status === "success") {
-                    return this.$confirm(this.$t('确定移除') + ` ${ file.name }？`); //删除
+                    return this.$confirm(this.$t('确定移除') + ` ${ file.name }？`,
+                    this.$t('提示'), {
+                        confirmButtonText: this.$t('确定'),
+                        cancelButtonText: this.$t('取消'),
+                        type: 'warning'
+                    }); //删除
                 }
             },
             beforeAvatarUpload(file) {
@@ -285,6 +295,9 @@
                     params: {
                         passwd: self.importPwd
                     }
+                }).then(res => {
+                   console.log(res)
+                   res.code&&(self.progress = false,self.opDiv = true);
                 }).catch(function(error) {
                     alert(error);
                 })

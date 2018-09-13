@@ -39,7 +39,7 @@
 	import {
 		reqInfo,
 		Http
-	} from '../../api/api';
+	} from '../../api/api111';
 	
 	export default {
 		data() {

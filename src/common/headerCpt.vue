@@ -25,7 +25,7 @@
   import {
     reqInfo,
     Http
-  } from "../api/api";
+  } from "../api/api111";
   
   //import NProgress from 'nprogress'
   export default {

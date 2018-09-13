@@ -158,7 +158,7 @@ export const Http = (opt) => {
             var code = false;
             !opt.cab&&MessageBox({
                 showClose: true,
-                message: res.data.message || '接口报错' ,
+                message: i18n.t(res.data.message) || '接口报错' ,
                 type: 'warning',
                 confirmButtonText: i18n.t('确定')
             });

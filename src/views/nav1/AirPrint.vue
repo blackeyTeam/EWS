@@ -43,7 +43,7 @@
 		getHttp,
 		postHttp,
 		Http
-	} from '../../api/api';
+	} from '../../api/api111';
 	export default {
 		data() {
 			return {
@@ -74,7 +74,6 @@
 		},
 		methods: {
 			AirptInfo: (self) => {
-	
 				Http(reqInfo.AirptInfo).then(data => {
 					self.formLabelAlign = data.data;
 					console.log(data)

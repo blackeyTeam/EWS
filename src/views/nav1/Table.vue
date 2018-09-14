@@ -165,7 +165,9 @@
 <script>
 	import util from '../../common/js/util'
 	//import NProgress from 'nprogress'
-	import {
+
+import api from '../../api/index';
+	const {
 		getUserListPage,
 		removeUser,
 		batchRemoveUser,
@@ -174,8 +176,7 @@
 		Http,
 		reqInfo,
 		format
-	} from '../../api/api111';
-	
+	} =api;	
 	export default {
 		data() {
 			return {

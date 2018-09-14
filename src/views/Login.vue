@@ -18,11 +18,11 @@
 </template>
 
 <script>
-  // import { requestLogin } from '../api/api';
-  import {
+ import api from '../api/index';
+ const{
     reqInfo,
     Http
-  } from '../api/api111';
+  } = api;
   //import NProgress from 'nprogress'
   export default {
     data() {

@@ -36,10 +36,11 @@
 </template>
 
 <script>
-	import {
-		reqInfo,
-		Http
-	} from '../../api/api111';
+import api from '../../api/index';
+ const{
+    reqInfo,
+    Http
+  } = api;
 	
 	export default {
 		data() {

@@ -38,12 +38,14 @@
 </template>
 
 <script>
-	import {
-		reqInfo,
-		getHttp,
-		postHttp,
-		Http
-	} from '../../api/api111';
+import api from '../../api/index';
+ const{
+    reqInfo,
+	getHttp,
+	postHttp,
+	Http
+  } = api;
+
 	export default {
 		data() {
 			return {

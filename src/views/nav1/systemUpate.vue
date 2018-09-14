@@ -16,7 +16,7 @@
 					<span class='versonTxt'>{{$t('固件是最新版本')}}</span>
 				</div>
 				<div class="Update" v-if="dispearBtn&&hasNewVer">
-					<el-button type="primary" @click="pollingStatu" v-if="latestVersion!='unknownVersion'">{{$t('Update Firmware')}}</el-button>
+					<el-button type="primary"id='ckbtn' @click="pollingStatu" v-if="latestVersion!='unknownVersion'">{{$t('Update Firmware')}}</el-button>
 					<el-button type="info" v-else >{{$t('Update Firmware')}}</el-button>
 					<div class='versonTxt'>
 						<p>{{$t('最新固件')}}:</p>
@@ -40,13 +40,15 @@
 </template>
 
 <script>
-	import {
+
+import api from '../../api/index';
+	const {
 		reqInfo,
 		getHttp,
 		postHttp,
         Http,
         uploadRes
-	} from '../../api/api111';
+	} =api;
 	export default {
 		data() {
 			return {
@@ -74,7 +76,9 @@
 				this.opDiv = false;
 				this.progress = true;
 				this.success = true;
-				console.log(22)
+				clearInterval(this.timer)
+				ckbtn.removeAttribute("disabled");
+				// console.log(22)
 			},
 			//检测获取固件最新版本
 			getLatestVersion(autoCheck) {
@@ -134,6 +138,7 @@
 						}
 					} else {
 						alert(res.data.message);
+						clearInterval(self.timer)
 					}
 					// setTimeout(()=> self.opDiv = false,2000)
 				}).catch(function(error) {
@@ -142,7 +147,8 @@
 	
 			},
 			//轮询下载进度
-			pollingStatu() {
+			pollingStatu(e) {
+				e.currentTarget.setAttribute("disabled", true)
 				const self = this;
 				self.strokePCT = 0; //重置
 				self.n = 0;
@@ -154,12 +160,12 @@
 						self.timer = setInterval(self.updateVersion, 2000)
 					}
 				});
+				// console.log(e.currentTarget)
 			},
 			//自动迭代
 			autoCount() {
 				const self = this;
 				self.n++;
-				self.strokePCT > 99 ? self.strokePCT = 99 : self.strokePCT += Math.round(Math.random() * 4); //：<7随机sun不超过88%
 				console.log(66);
 				if (self.n >= 12) { //2分钟时检测版本更新情况
 
@@ -167,6 +173,7 @@
 					clearInterval(self.timer2)
 					self.getLatestVersion(true);
 				}
+				self.strokePCT += Math.round(Math.random() * 4); //：<7随机sun不超过88%
 			}
 		},
 		mounted() {
@@ -236,4 +243,5 @@
 	.el-progress-bar__inner {
 		background-color: #00A6CE !important
 	}
+	.el-input.is-disabled .el-input__inner{ background-color: rgb(255, 255, 255,1)!important;opacity: 1;}
 </style>

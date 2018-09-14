@@ -17,11 +17,12 @@
 </template>
 
 <script>
-    import {
-        reqInfo,
-        getHttp,
-        postHttp
-    } from '../../api/api111';
+import api from '../../api/index';
+ const{
+    reqInfo,
+    getHttp,
+    postHttp
+  } = api;
     export default {
         data() {
             return {

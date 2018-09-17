@@ -132,7 +132,7 @@ import api from '../../api/index';
 						if (self.strokePCT == -1) {
 							self.success = false; //更新失败
 							clearInterval(self.timer)
-						} else if (self.strokePCT >= 40) { //40%后停止请求进入自动迭代
+						} else if (self.strokePCT >= 75) { //40%后停止请求进入自动迭代
 							clearInterval(self.timer)
 							self.timer2 = setInterval(self.autoCount, 10000);
 						}
@@ -173,7 +173,7 @@ import api from '../../api/index';
 					clearInterval(self.timer2)
 					self.getLatestVersion(true);
 				}
-				self.strokePCT += Math.round(Math.random() * 4); //：<7随机sun不超过88%
+				self.strokePCT += Math.round(Math.random() * 1); //：<7随机sun不超过88%
 			}
 		},
 		mounted() {
